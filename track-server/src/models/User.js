@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const GeoJSON = require(`mongoose-geojson-schema`);
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -10,9 +11,13 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true
-    }
-
+    },
+    position: mongoose.Schema.Types.Point,
+    contactpersons: [String]
 });
+
+userSchema.index({ position: `2dsphere` });
+
 
 userSchema.pre('save', function(next) {
   const user = this;

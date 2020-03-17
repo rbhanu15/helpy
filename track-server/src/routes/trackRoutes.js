@@ -13,6 +13,27 @@ router.get('/tracks', async (req, res)=>{
 
     res.send(tracks);
 });
+router.get('/findnear', async(req,res)=>{
+
+   const tracks = await Track.find({ userId: req.user._id });
+
+   const nearmeUser = await Track.find({
+      locations: {
+          $near: {
+              $geometry: {
+                  type: `Point`,
+                  coordinates: [ tracks.position.coordinates[0], tracks.position.coordinates[1] ]
+              },
+              $maxDistance: 500,
+              $minDistance: 0
+          }
+      }
+  });
+  const usersnearme = nearmeUser.map(({ _id }) => ({ _id }));
+  
+  res.send(usersnearme);
+
+});
 
 router.post('/tracks', async (req, res)=>{
  const { name, locations } = req.body;
