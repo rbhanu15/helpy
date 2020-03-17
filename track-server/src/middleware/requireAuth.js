@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
+
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
   // authorization === 'Bearer laksjdflaksdjasdfklj'
@@ -20,6 +21,7 @@ module.exports = (req, res, next) => {
 
     const user = await User.findById(userId);
     req.user = user;
+
     next();
   });
 };
