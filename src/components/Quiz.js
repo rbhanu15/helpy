@@ -1,31 +1,72 @@
-import React from 'react'
-import { Text, StyleSheet, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import React  from 'react'
+import { Text, StyleSheet, View, Linking, Share, Button, TouchableOpacity, Image } from 'react-native'
+import share from "../img/share.svg"
 
 const Quiz = () => {
 
+    function onShare(){
+        try {
+            const result = Share.share({
+                title: 'Download Helpy to fight against Corona',
+                message: 'https://www.paypal.com',
+            });
+
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    };
+
         return (
             <View style={styles.container}>
-                <TouchableOpacity>
-                <Text style={{fontSize:20, marginBottom:10}}> nCovid-19 Symptoms </Text>
-                <Text style={{fontSize:15}}>Watch for symptoms
-                    Reported illnesses have ranged from mild symptoms to severe illness and death for confirmed coronavirus disease 2019 (COVID-19) cases.
-                    The following symptoms may appear 2-14 days after exposure.
+                <Text style={{ fontSize: 30, marginBottom: 10, textAlign: 'center', fontWeight: "bold" }}>Covid-19 Symptoms </Text>
+                <Text style={{ fontSize: 20, textAlign: 'justify'}}>
+                Signs and symptoms of COVID-19 may appear two to 14 days after exposure and can include: <Text style={{ fontWeight: "bold" }}>
+                        Fever, Cough, Shortness of breath or difficulty breathing</Text>
                 </Text>
-                <Text style={{fontSize:25,marginTop:10}}>
-                Fever
+
+                <Text style={{ fontSize: 25, paddingTop: 30 }} onPress={() => Linking.openURL('https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')}>
+                    For more information visit: <Text style={{ color: 'blue' }}> www.who.int</Text>
                 </Text>
-                <Text style={{fontSize:25}}>
-                Cough
+
+                <Text style={{ fontSize: 30, marginBottom: 10, paddingTop: 80, textAlign: 'center', fontWeight: "bold" }}>How Helpy works </Text>
+                <Text style={{ fontSize: 20, textAlign: 'justify' }}>
+                    If you press the red button, all persons with whom you have had contact over 50 meters will be notified. 
+                    You will also be notified when someone pushes the red button.
+                     
                 </Text>
-                <Text style={{fontSize:25}}>
-                Shortness of breath
-                </Text>
+                
+
+
+                <TouchableOpacity
+                    style={styles.card}
+                    onPress={() => onShare()}
+                >
+                    <Text style={styles.text}>Share Helpy</Text>
                 </TouchableOpacity>
+
+                <Image>
+
+                    
+                </Image>
+                
+                <Text style={{ fontSize: 25, paddingTop: 60 }} onPress={() => Linking.openURL('https://www.paypal.com')}>
+                    Support the service: <Text style={{ color: 'blue',}}>www.paypal.com</Text>
+                </Text>
             </View>
         )
     
 }
+
+
 
 const styles = StyleSheet.create({
     container:{
@@ -33,11 +74,32 @@ const styles = StyleSheet.create({
         marginTop:30,
         marginBottom:20,
         marginHorizontal:10,
-        borderRadius:30,
+        borderRadius:20,
         backgroundColor:'white',
         padding:20,
-        alignItems:'center',
-        justifyContent:'center'
+        
+    },
+    card: {
+        marginTop: 30,
+
+        height: 80,
+        borderWidth: 5,
+        borderColor: 'black',
+        borderRadius: 30,
+        display: 'flex',
+        flex: 1,
+        
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        elevation: 30,
+    },
+    text: {
+        
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'black'
     }
 })
 

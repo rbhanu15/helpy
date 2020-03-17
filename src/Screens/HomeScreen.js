@@ -12,35 +12,34 @@ const [person, setPerson] = useState(0);
         return (
             <SafeAreaView forceInset={{top:'always'}} style={styles.container} >
             <ScrollView style={styles.container}>
-                <Card>
+                    <View style={{ paddingTop: 40,display: "flex", justifyContent: "center", alignItems: "center"}}>
                  <Text style={{
+                     padding: 20,
                     fontSize:20, 
                     fontWeight:'bold',
                     color:'grey',
-                    display:"flex"
-                    }}>My Contact Persons:</Text>
+                    }}>Number of people that i have had contact with: d d</Text>
                 <Text style={{
                     fontSize:60, 
                     fontWeight:'bold',
                     color:'black',
-                    display:"flex"
                     }}>{person}</Text>
-                </Card>
+                </View>
                 <Alarm 
-                title="I have the Symptoms and it is very likely that I have it. Notificate my Contact Person"
+                        title="I am 100% sure that I have COVID-19."
                 />
                 <Quiz />
             </ScrollView>
             </SafeAreaView>
         )
-    
 }
 
 const styles = StyleSheet.create({
     container: {
         display:"flex",
+        
         flex:1,
-        backgroundColor:'#F3F3F3',
+        backgroundColor:'#FFFFFF',
     },
     
 })

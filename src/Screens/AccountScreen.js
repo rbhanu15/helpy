@@ -11,23 +11,22 @@ const AccountScreen = () => {
 
   return <SafeAreaView forceInset={{top:'always'}}>
     <Spacer>
-    <Text style={{fontSize:20, alignSelf:'center'}}>My Account</Text>
+    <Text style={{fontSize:30, alignSelf:'center'}}>My Account</Text>
     </Spacer>
     <Spacer>
-    <Card>
-                 <Text style={{
-                    fontSize:20, 
-                    fontWeight:'bold',
-                    color:'grey',
-                    display:"flex"
-                    }}>My Contact Persons:</Text>
-                <Text style={{
-                    fontSize:60, 
-                    fontWeight:'bold',
-                    color:'black',
-                    display:"flex"
-                    }}>{person}</Text>
-                </Card>
+      <View style={{ paddingTop: 40, display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Text style={{
+          padding: 20,
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: 'grey',
+        }}>Number of people that i have had contact with: d d</Text>
+        <Text style={{
+          fontSize: 60,
+          fontWeight: 'bold',
+          color: 'black',
+        }}>{person}</Text>
+      </View>
     </Spacer>
     <Spacer>
        <Button title="Sign Out" onPress={signout} />

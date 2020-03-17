@@ -27,7 +27,7 @@ const switchNavigator = createSwitchNavigator({
   mainFlow: createBottomTabNavigator({
     Home: HomeScreen,
     Notification: NotifiScreen,
-    Account: AccountScreen
+    Accounte: AccountScreen
   })
 });
 
