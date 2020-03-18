@@ -15,9 +15,8 @@ const Alarm = props => {
         <Card elevation={20} cornerRadius={19} style={{  padding: 10, marginLeft: 20, marginRight: 20 }}>
             <Text style={{ padding: 10, alignSelf: 'center', color: "#2F2E41", fontWeight: "bold", fontSize: 30 }}>Hold if you have </Text>
             <Text style={{ padding: 0, alignSelf: 'center', color: "#2F2E41", fontWeight: "bold", fontSize: 30 }}>SARS-CoV-2</Text>
-            <TouchableOpacity onLongPress={() => setdialogVisible(true)} style={{ margin: 30, alignSelf: 'center', borderRadius: 50, backgroundColor: "#FF6366", width: 100, height: 100, borderWidth: 4, borderColor: '#B44747' }}>
-                <Image source={icon} style={{ resizeMode: 'center', alignSelf: 'center', width: "60%", marginTop: -212}} ></Image>
-
+            <TouchableOpacity onLongPress={() => setdialogVisible(true)} style={styles.buttom}>
+                <Image source={icon} style={styles.buttomimage} ></Image>
             </TouchableOpacity>
 
             <ConfirmDialog
@@ -68,6 +67,26 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         textAlign:'center',
         color:'black'
+    },
+    buttom:{
+        display:'flex',
+        flex:1,
+        margin: 30, 
+        alignSelf: 'center',
+        borderRadius: 70, 
+        backgroundColor: "#FF6366", 
+        width: 120, 
+        height: 120, 
+        borderWidth: 4, 
+        borderColor: '#B44747',
+        justifyContent:'center',
+        paddingBottom:5
+    },
+    buttomimage:{
+        resizeMode: 'contain', 
+        alignSelf: 'center',
+        flex:0.7,
+        opacity:0.6, 
     }
 })
 
