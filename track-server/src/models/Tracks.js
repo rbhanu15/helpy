@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
+const GeoJSON = require(`mongoose-geojson-schema`);
 
 
 
 const pointSchema = new mongoose.Schema({
-    timestamp: Number,
     coords: {
         latitude: Number,
         longitude: Number,
@@ -19,13 +19,10 @@ const tracksSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    name:{
-        type:String,
-        default: ''
-    },
-    locations: [pointSchema],
-    
+    //locations: [pointSchema],
+    locations: mongoose.Schema.Types.Point
 });
+tracksSchema.index({ locations: `2dsphere` });
 
 
 mongoose.model('Tracks', tracksSchema);

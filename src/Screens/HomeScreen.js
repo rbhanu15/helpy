@@ -18,7 +18,7 @@ const [person, setPerson] = useState(0);
                     fontSize:20, 
                     fontWeight:'bold',
                     color:'grey',
-                    }}>Number of people that i have had contact with: d d</Text>
+                    }}>Number of people that i have had contact with:</Text>
                 <Text style={{
                     fontSize:60, 
                     fontWeight:'bold',
