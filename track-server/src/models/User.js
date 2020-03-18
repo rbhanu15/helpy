@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const GeoJSON = require(`mongoose-geojson-schema`);
 
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -13,7 +14,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     position: mongoose.Schema.Types.Point,
-    contactpersons: [String]
+    contactpersons: []
 });
 
 userSchema.index({ position: `2dsphere` });
@@ -56,4 +57,4 @@ userSchema.methods.comparePassword = function(candidatepassword){
 };
 
 
-mongoose.model('User', userSchema);
+mongoose.model(`User`, userSchema);

@@ -6,14 +6,15 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Authroutes = require('./routes/Authroutes');
 const trackRoutes = require('./routes/trackRoutes');
+const LocationRoutes = require('./routes/Locationroutes');
 const requireAuth = require('./middleware/requireAuth');
 
 const app = express();
-const io = require('socket.io')();
+//const io = require('socket.io')();
 
-app.io = io;
+//app.io = io;
 
-const locationRoutes = require('./realtime')(io);
+//const locationRoutes = require('./realtime')(io);
 
 
 
@@ -22,7 +23,7 @@ const locationRoutes = require('./realtime')(io);
 app.use(bodyParser.json());
 app.use(Authroutes);
 app.use(trackRoutes);
-app.use(locationRoutes);
+app.use(LocationRoutes);
 
 const mongoUri = 'mongodb+srv://admin:passwordpassword@cluster0-pjyxj.mongodb.net/test?retryWrites=true&w=majority';
 
@@ -50,10 +51,9 @@ app.get('/', requireAuth, (req, res)=>{
 
 app.listen(3000, ()=>{
     console.log('Listening on 3000');
-    
-    app.io.on('connection', function (socket) {
+    /*app.io.on('connection', function (socket) {
         console.log("user connected");
-    });
+    });*/
 }); 
 
 
