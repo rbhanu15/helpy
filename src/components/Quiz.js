@@ -1,6 +1,8 @@
 import React  from 'react'
 import { Text, StyleSheet, View, Linking, Share, Button, TouchableOpacity, Image } from 'react-native'
 import share from "../img/share.svg"
+import { Card } from 'react-native-shadow-cards';
+
 
 const Quiz = () => {
 
@@ -27,12 +29,7 @@ const Quiz = () => {
 
         return (
             <View style={styles.container}>
-                <Text style={{ fontSize: 30, marginBottom: 10, textAlign: 'center', fontWeight: "bold" }}>Covid-19 Symptoms </Text>
-                <Text style={{ fontSize: 20, textAlign: 'justify'}}>
-                Signs and symptoms of COVID-19 may appear two to 14 days after exposure and can include: <Text style={{ fontWeight: "bold" }}>
-                        Fever, Cough, Shortness of breath or difficulty breathing</Text>
-                </Text>
-
+                
                 <Text style={{ fontSize: 25, paddingTop: 30 }} onPress={() => Linking.openURL('https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public')}>
                     For more information visit: <Text style={{ color: 'blue' }}> www.who.int</Text>
                 </Text>
