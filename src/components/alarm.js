@@ -1,39 +1,44 @@
-import React, {useState} from 'react'
-import { Text, StyleSheet, View , TouchableOpacity, Button} from 'react-native'
+import React, {useState, useEffect} from 'react'
+import { Text, StyleSheet, View , TouchableOpacity, Button, Image} from 'react-native'
 import { ConfirmDialog, ProgressDialog} from 'react-native-simple-dialogs';
+import { Card } from 'react-native-shadow-cards';
+
+import ProgressCircle from 'react-native-progress-circle'
+import icon from "../img/alarm.png"
+
 
 const Alarm = props => {
 
     const [dialogVisible, setdialogVisible] = useState(false)
-    const [waitTime, setwaitTime] = useState(5)
-
     
-        return (
-            <TouchableOpacity onPress={() => setdialogVisible(true)}>
-                <View style={styles.card}>
-                <Text style={styles.text}>{props.title}</Text>
-                    <ConfirmDialog
-                        title="Warning"
-                        message="Are you 100% sure you have COVID-19? This action cannot be canceled!"
-                        visible={dialogVisible}
-                        onTouchOutside={() => setdialogVisible(false)}
+    return (
+        <Card elevation={20} cornerRadius={19} style={{  padding: 10, marginLeft: 20, marginRight: 20 }}>
+            <Text style={{ padding: 10, alignSelf: 'center', color: "#2F2E41", fontWeight: "bold", fontSize: 30 }}>Hold if you have </Text>
+            <Text style={{ padding: 0, alignSelf: 'center', color: "#2F2E41", fontWeight: "bold", fontSize: 30 }}>SARS-CoV-2</Text>
+            <TouchableOpacity onLongPress={() => setdialogVisible(true)} style={{ margin: 30, alignSelf: 'center', borderRadius: 50, backgroundColor: "#FF6366", width: 100, height: 100, borderWidth: 4, borderColor: '#B44747' }}>
+                <Image source={icon} style={{ resizeMode: 'center', alignSelf: 'center', width: "60%", marginTop: -212}} ></Image>
 
-                        positiveButton={{
-                            
-                            enable: false,
-                            title: "Yes",
-                            onPress: () => { console.log('alarm!'); setdialogVisible(false)}
-                        }}
-                        negativeButton={{
-                            title: "Cancel",
-                            onPress: () => setdialogVisible(false)
-                        }}
-                    />
-            </View>
-                
             </TouchableOpacity>
-        )
-    
+
+            <ConfirmDialog
+                title="Warning"
+                message="Are you 100% sure you have COVID-19? This action cannot be canceled!"
+                visible={dialogVisible}
+                onTouchOutside={() => setdialogVisible(false)}
+
+                positiveButton={{
+
+                    enable: false,
+                    title: "Yes",
+                    onPress: () => { console.log('alarm!'); setdialogVisible(false) }
+                }}
+                negativeButton={{
+                    title: "Cancel",
+                    onPress: () => setdialogVisible(false)
+                }}
+            />
+        </Card>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -66,4 +71,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Alarm;
+export default Alarm
