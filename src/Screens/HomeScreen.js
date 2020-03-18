@@ -1,35 +1,33 @@
 import React, { useState } from 'react'
-import { Text, StyleSheet, View, ScrollView, Dimensions } from 'react-native'
-import { Card } from 'react-native-elements'
+import { Text, StyleSheet, View, ScrollView, Dimensions, Image } from 'react-native'
 import Alarm from '../components/alarm';
 import Quiz from '../components/Quiz';
+import { Card } from 'react-native-shadow-cards';
 import SafeAreaView from 'react-native-safe-area-view';
 
+//HOC
+
+
+import ContactPerson from '../components/ContactPersons'
+import Symptoms from "../components/Symptoms"
+import Info from "../components/Info"
+import Donate from "../components/Donate"
 
 const HomeScreen = () => {
-const [person, setPerson] = useState(0);
+
 
         return (
             <SafeAreaView forceInset={{top:'always'}} style={styles.container} >
-            <ScrollView style={styles.container}>
-                    <View style={{ paddingTop: 40,display: "flex", justifyContent: "center", alignItems: "center"}}>
-                 <Text style={{
-                     padding: 20,
-                    fontSize:20, 
-                    fontWeight:'bold',
-                    color:'grey',
-                    }}>Number of people that i have had contact with:</Text>
-                <Text style={{
-                    fontSize:60, 
-                    fontWeight:'bold',
-                    color:'black',
-                    }}>{person}</Text>
-                </View>
-                <Alarm 
-                        title="I am 100% sure that I have COVID-19."
-                />
-                <Quiz />
-            </ScrollView>
+                <ScrollView style={styles.container}>
+                    <Card elevation={20} cornerRadius={19} style={{ marginTop: 20, padding: 5, marginLeft: 20, backgroundColor: "white", width: 80 }}>
+                        <Text style={{ textAlign: 'center',  color: "#FF6366", fontWeight: "bold", fontSize: 23 }}>helpy</Text>
+                    </Card>
+                    <ContactPerson></ContactPerson>
+                    <Alarm title="I am 100% sure that I have COVID-19." />
+                    <Symptoms></Symptoms>
+                    <Info></Info>
+                    <Donate></Donate>
+                </ScrollView>
             </SafeAreaView>
         )
 }
@@ -39,9 +37,8 @@ const styles = StyleSheet.create({
         display:"flex",
         
         flex:1,
-        backgroundColor:'#FFFFFF',
+        backgroundColor:'#DDDEE8',
     },
-    
 })
 
 export default HomeScreen;
