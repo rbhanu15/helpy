@@ -10,5 +10,8 @@ npm-debug.*
 web-build/
 web-report/
 
+# Backend
+track-server/node_modules/**/*
+
 # macOS
 .DS_Store
