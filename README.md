@@ -1,9 +1,14 @@
 # Helpy App
 ## With Helpy stay Healthy  🤗
+
 It Currently Is Difficult To Classify 
 Those People With Whom An 
 Infected Person Was In Contact.
-If You Press The Red Button All Contacts Get Notified. 
+### Helpy Is The Solition
+If You Press The Red Button All Contacts Get Notified.This Way Your Contacts Can Act Faster. 
+
+![Helpy Logo](assets/mockups.PNG?raw=true "Title")
+
 ## our Logo
 ![Helpy Logo](assets/icon.png?raw=true "Title")
 
