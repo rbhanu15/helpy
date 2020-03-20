@@ -14,7 +14,11 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     position: mongoose.Schema.Types.Point,
-    contactpersons: []
+    contactpersons: [],
+    notification: {
+        type:String,
+        default: ''
+    },
 });
 
 userSchema.index({ position: `2dsphere` });

@@ -1,11 +1,34 @@
-import React,{useState, useContext} from 'react';
+import React,{useState, useContext,useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import {Text, Input, Button } from 'react-native-elements';
 import Spacer from './Spacer';
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
 
 const Authform = ({ headerText, errorMessage,onSubmit, buttontext }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userposition, setloc] = useState('');
+    
+    useEffect(()=>{
+        _getLocationAsync();
+      },[]);
+    
+    _getLocationAsync = async () => {
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status !== 'granted') {
+          console.log('error permission not granted')
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        const userposition = {
+            "type" : "Point",
+            "coordinates" : [location.coords.longitude,location.coords.latitude],
+        }
+        setloc(userposition);
+        //console.log(userposition)
+      };
+
     return(
         <>
         <Spacer>
@@ -29,7 +52,7 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext }) => {
         <Spacer>
         <Button 
         title={buttontext} 
-        onPress={()=> onSubmit({email, password})}/>
+        onPress={()=> onSubmit({email, password,userposition})}/>
         </Spacer>
         </>
     );
