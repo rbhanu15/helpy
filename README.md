@@ -8,4 +8,4 @@ If You Press The Red Button All Contacts Get Notified.
 ![Helpy Logo](assets/icon.png?raw=true "Title")
 
 # our app is now available for Android and IOS.
-<a href="https://www.buymeacoffee.com/AliKarami" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+<a href="https://www.buymeacoffee.com/AliKarami" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-red.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
