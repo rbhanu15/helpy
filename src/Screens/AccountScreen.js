@@ -4,10 +4,11 @@ import { Button, Card } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import Spacer from '../components/Spacer';
 import {Context} from '../context/AuthContext';
+import {Context as LocationContext} from '../context/LocationConext';
 
 const AccountScreen = () => { 
-  const { state, signout} = useContext(Context);
-  const [person, setPerson] = useState(0);
+  const { signout} = useContext(Context);
+  const { state } = useContext(LocationContext);
 
   return <SafeAreaView forceInset={{top:'always'}}>
     <Spacer>
@@ -25,7 +26,7 @@ const AccountScreen = () => {
           fontSize: 60,
           fontWeight: 'bold',
           color: 'black',
-        }}>{person}</Text>
+        }}>{state.count}</Text>
       </View>
     </Spacer>
     <Spacer>
