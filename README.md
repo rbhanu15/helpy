@@ -1,6 +1,7 @@
 # helpy
 We will destroy Corona  😜
 
+![Helpy Logo](assets/icon.png?raw=true "Title")
 
 
 
