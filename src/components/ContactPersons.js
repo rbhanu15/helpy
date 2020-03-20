@@ -1,13 +1,15 @@
-import React, { Component, useState } from 'react'
-import { Text, StyleSheet, View, Linking, Share, Button, TouchableOpacity, Image  } from 'react-native'
+import React, { Component, useState, useContext } from 'react'
+import { Text, StyleSheet, View, Image  } from 'react-native'
+import {Context as LocationContext} from '../context/LocationConext';
 
 //import {Card} from 'react-native-shadow-cards';
 
 import contact from "../img/contact2.png"
 
-function ContactPersons()
+const ContactPersons = (props) => 
 {
-    const [person, setPerson] = useState(30);
+    // Contacts = props.contact;
+    const { state } = useContext(LocationContext);
     return (
         <View style={styles.card}>
             <Image style={styles.image} source={contact}></Image>  
@@ -24,9 +26,9 @@ function ContactPersons()
                     fontSize: 120,
                     marginBottom: 30,
                     fontWeight: 'bold',
-                    color: '#2F2E41',
+                    color: '#FF6366',
                     textAlign: "center"
-                }}>{person}</Text>                     
+                }}>{state.count}</Text>                     
         </View>  
 
     )

@@ -35,14 +35,25 @@ const clearErrorMessage = dispatch => () => {
     dispatch({ type: 'clear_error_message' });
   };
 
-const signup = (dispatch) => async ({email,password})=>{
+const signup = (dispatch) => async ({email,password,userposition})=>{
         // make api req to sign up with email and pass
 
         //if sign up, modify state that we are authendicated 
 
         //if signing up fail give error 
         try{
-            const response = await trakerAPI.post('/signup', {email ,password});
+            // Send a POST request
+
+            const response = await trakerAPI.post('/signup', {
+                email,
+                password,
+                position: {"type" : "Point",
+                "coordinates" : [
+                    userposition.coordinates[0],
+                    userposition.coordinates[1]
+                    ]
+                },
+            });
             await AsyncStorage.setItem('token', response.data.token);
             dispatch({ type:'signin', payload: response.data.token });
             //navgitae to mainflow

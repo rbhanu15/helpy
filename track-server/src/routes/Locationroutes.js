@@ -14,8 +14,8 @@ router.get('/currentlocation', async (req,res)=>{
 
 router.post('/currentlocation', async (req, res)=>{
     const { position } = req.body;
- 
-        if(!position)
+
+    if(!position)
         {
            return res.status(422).send({error:'You must provide a location'});
         }
@@ -34,6 +34,7 @@ router.post('/currentlocation', async (req, res)=>{
                 }
             
             await user.save();
+
             }
 
             const contactpersons = await User.find({
@@ -53,7 +54,7 @@ router.post('/currentlocation', async (req, res)=>{
             //user.contactpersons.push(contactpersons);
             await user.save();
             //console.log(contactpersons);
-            res.send(user);
+            res.send(user.contactpersons);
         }catch(err){
            res.status(422).send({error: err.message});
         }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useCallback, useContext, useState} from 'react';
 import {
   createAppContainer,
   createSwitchNavigator
@@ -19,12 +19,30 @@ import ResolveofAuthScreen from './src/Screens/ResolveofAuthScreen';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { setNavigator } from './src/NavigationRef';
 import {Provider as LocationProvider} from './src/context/LocationConext';
+import { Provider as NotifiProvider } from './src/context/NotificationContext';
+
+
+/*import * as TaskManager from 'expo-task-manager';
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
+
+
 import IconWithBadge from './src/components/Tabbaricons';
 
 /*const NotificationIconWithBadge = props => {
   // You should pass down the badgeCount in some other ways like context, redux, mobx or event emitters.
   return <IconWithBadge {...props} badgeCount={3} />;
 };*/
+
+//import {registerFetchTask} from './src/Hooks/Backgroundupdate';
+
+//const INTERVAL_TASKS = 5000;
+//const LOCATION_TASK_NAME = "background-location-task";
+
+/*registerFetchTask('teste', () => {
+  console.log('Rodando em background');
+}, INTERVAL_TASKS);
+*/
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
   const { routeName } = navigation.state;
@@ -76,11 +94,91 @@ const switchNavigator = createSwitchNavigator({
 const App = createAppContainer(switchNavigator);
 
 export default () => {
+
   return(
-    <LocationProvider>
-      <AuthProvider>
-        <App ref={(navigator)=> {setNavigator(navigator)}} />
-      </AuthProvider>
-    </LocationProvider>
+    <NotifiProvider>
+      <LocationProvider>
+        <AuthProvider>
+          <App ref={(navigator)=> {setNavigator(navigator)}} />
+        </AuthProvider>
+      </LocationProvider>
+    </NotifiProvider>
   );
 };
+
+/*test for background location tracking*/
+/**************************************************************************** */
+  /*useEffect( () => {
+    _startTheTask();
+  }, []);
+
+  _startTheTask = async () =>{
+    const { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status === "granted") {
+      _getLocationAsync();
+    } else {
+      console.log('errorrrrr')
+    }
+  }
+  _getLocationAsync = async () => {
+    await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
+      enableHighAccuracy: true,
+      accuracy: Location.Accuracy.BestForNavigation,
+      distanceInterval: 1,
+      timeInterval: 5000
+    });
+    // watchPositionAsync Return Lat & Long on Position Change
+    location = await Location.watchPositionAsync(
+      {
+        accuracy: Location.Accuracy.BestForNavigation,
+        distanceInterval: 1,
+        timeInterval: 10000
+      },
+      newLocation => {
+        let { coords } = newLocation;
+        // console.log(coords);
+        let region = {
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+          latitudeDelta: 0.045,
+          longitudeDelta: 0.045
+        };
+      },
+      error => console.log(error)
+    );
+    return location;
+  };
+
+  /*const startWatching = async () => {
+    const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
+    
+    const { scope } = permissions.location.ios
+    //const { status } = await Location.requestPermissionsAsync();
+    const permissionStatus = 1;
+    if (Platform.OS === 'ios') {
+      const { scope } = permissions.location.ios
+    } 
+    if (status === 'granted' && scope === 'always') {
+      await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
+        accuracy: Location.Accuracy.BestForNavigation,
+        timeInterval: 1000,
+        distanceInterval: 1 
+      });
+     }
+  };*/
+  
+
+
+/*TaskManager.defineTask(LOCATION_TASK_NAME, async ({ data, error }) => {
+  if (error) {
+    console.log(error);
+    return;
+  }
+  if (data) {
+    const { locations } = data;
+    let lat = locations[0].coords.latitude;
+    let long = locations[0].coords.longitude;
+   
+    console.log("Received new locations for user = ",locations);
+  }
+});*/

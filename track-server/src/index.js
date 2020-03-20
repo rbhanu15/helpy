@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const Authroutes = require('./routes/Authroutes');
 const trackRoutes = require('./routes/trackRoutes');
 const LocationRoutes = require('./routes/Locationroutes');
+const NotificationRoutes = require('./routes/Notification');
 const requireAuth = require('./middleware/requireAuth');
 
 const app = express();
@@ -24,8 +25,10 @@ app.use(bodyParser.json());
 app.use(Authroutes);
 app.use(trackRoutes);
 app.use(LocationRoutes);
+app.use(NotificationRoutes);
 
 const mongoUri = 'mongodb+srv://admin:passwordpassword@cluster0-pjyxj.mongodb.net/test?retryWrites=true&w=majority';
+
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,

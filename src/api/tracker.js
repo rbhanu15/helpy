@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'http://897748e9.ngrok.io'
+    baseURL: 'https://helpy-api-rose.now.sh'
 });
