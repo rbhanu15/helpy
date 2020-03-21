@@ -1,13 +1,30 @@
 body
 {
-  background-color: #F5F5F5;
+  background-color: #ffffff;
+}
+
+body::-webkit-scrollbar 
+{
+    width: 0.5rem;
+}
+   
+body::-webkit-scrollbar-track 
+{
+
+    background-color: white;
+}
+   
+body::-webkit-scrollbar-thumb 
+{
+    background-color: rgb(47, 46, 65);
+    border-radius: 50px;
 }
 
 h1
 {
     color: #FF6366;
     text-align: center;
-    font-size: 70px;
+    font-size: 90px;
     font-weight: bold;
     padding: 0px 80px 10px 80px;
     background-color: white;
@@ -25,6 +42,16 @@ h2
     padding: 0px 20px 0px 20px;
 }
 
+h3
+{
+
+}
+
+h4
+{
+
+}
+
 .red
 {
     color: #FF6366;
@@ -34,7 +61,7 @@ h2
 {
     padding: 10px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     background-color: #FF6366;
     border-radius: 20px;
     width: 120px;
@@ -94,4 +121,85 @@ div.item {
     color: #2F2E41;
     font-size: 20px;
     font-weight: bold;
+}
+
+
+.vertical-timeline::before
+{
+    background-color: #2F2E41!important;
+    height: 60%!important;
+    top: 50px!important;
+}
+
+
+.vertical-timeline-element-icon
+{
+    box-shadow: none!important;
+}
+
+
+.bmc-button img {
+    height: 34px !important;
+    width: 35px !important;
+    margin-bottom: 1px !important;
+    box-shadow: none !important;
+    border: none !important;
+    vertical-align: middle !important;
+    }
+
+    .bmc-button {
+    padding: 7px 10px 7px 10px !important;
+    line-height: 35px !important;
+    height: 51px !important;
+    min-width: 217px !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    color: #ffffff !important;
+    background-color: #FF5F5F !important;
+    border-radius: 5px !important;
+
+    padding: 7px 10px 7px 10px !important;
+    font-size: 22px !important;
+    letter-spacing: 0.6px !important;
+
+    margin: 0 auto !important;
+    font-family: 'Cookie', cursive !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -o-transition: 0.3s all linear !important;
+    -webkit-transition: 0.3s all linear !important;
+    -moz-transition: 0.3s all linear !important;
+    -ms-transition: 0.3s all linear !important;
+    transition: 0.3s all linear !important;
+    }
+
+    .bmc-button:hover,
+    .bmc-button:active,
+    .bmc-button:focus {
+    -webkit-box-shadow: 0px 1px 2px 2px white !important;
+    text-decoration: none !important;
+    box-shadow: 0px 0px 0px 3px white !important;
+    opacity: 0.85 !important;
+    color: #ffffff !important;
+    }
+
+
+
+    .Left
+    {
+    left: -400px;
+    position: relative;
+    animation: slide 1.5s forwards;
+    }
+
+    .Right
+    {
+        left: 400px;
+        position: relative;
+        animation: slide 1.5s forwards;
+    }
+
+
+      @keyframes slide {
+    100% { left: 0; }
 }
