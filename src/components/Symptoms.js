@@ -6,7 +6,7 @@ import { Text, StyleSheet, View, Linking, Share, Button, TouchableOpacity, Image
 function Symptoms(){
         return (
 
-                <Card elevation={20} cornerRadius={19} style={{ padding: 30, margin: 20 }}>
+                <Card elevation={20} cornerRadius={19} style={{ padding: 30, margin: 20, marginBottom: 0 }}>
                     <Text style={{ fontSize: 30, marginBottom: 10, textAlign: 'center', fontWeight: "bold" }}>Symptoms</Text>
 
                     <View style={{ display: 'flex', flexDirection: 'row', justifyContent:'center',alignItems: 'center', paddingTop: 20}}>
@@ -31,7 +31,7 @@ function Symptoms(){
                     </Text>
 
                     <View style={{ borderRadius:19 ,padding: 20, marginTop: 20, backgroundColor: "#2F2E41",  }}>
-                        <Text style={{ fontSize: 15, textAlign: 'center', fontWeight: "bold", color:'white' }}>Visit who.it for more information</Text>
+                    <Text style={{ fontSize: 15, textAlign: 'center', fontWeight: "bold", color: 'white' }} onPress={() => Linking.openURL('https://www.who.int/emergencies/diseases/novel-coronavirus-2019')}>Visit who.it for more information</Text>
                     </View>
                 </Card>     
 

@@ -6,26 +6,7 @@ import { Card } from 'react-native-shadow-cards';
 
 const Quiz = () => {
 
-    function onShare(){
-        try {
-            const result = Share.share({
-                title: 'Download Helpy to fight against Corona',
-                message: 'https://www.paypal.com',
-            });
-
-            if (result.action === Share.sharedAction) {
-                if (result.activityType) {
-                    // shared with activity type of result.activityType
-                } else {
-                    // shared
-                }
-            } else if (result.action === Share.dismissedAction) {
-                // dismissed
-            }
-        } catch (error) {
-            alert(error.message);
-        }
-    };
+    
 
         return (
             <View style={styles.container}>
@@ -55,7 +36,7 @@ const Quiz = () => {
                     
                 </Image>
                 
-                <Text style={{ fontSize: 25, paddingTop: 60 }} onPress={() => Linking.openURL('https://www.paypal.com')}>
+                <Text style={{ fontSize: 25, paddingTop: 60 }} onPress={() => Linking.openURL('https://www.paypal.com/pools/c/8ny5af3B7u')}>
                     Support the service: <Text style={{ color: 'blue',}}>www.paypal.com</Text>
                 </Text>
             </View>
