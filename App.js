@@ -57,11 +57,11 @@ const slides = [
 ];
 
 export default class App extends React.Component {
-  // componentDidMount() {
-  //   AsyncStorage.getItem("first_item").then((value) => {
-  //     this.setState({ showRealApp: value });
-  //   });
-  // }
+  componentDidMount() {
+    AsyncStorage.getItem("first_item").then((value) => {
+      this.setState({ showRealApp: value });
+    });
+  }
   state = { showRealApp: false };
   _renderItem = ({ item, dimensions }) => (
     <LinearGradient
