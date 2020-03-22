@@ -48,9 +48,6 @@ const HomeScreen = () => {
             <SafeAreaView forceInset={{top:'always'}} style={styles.container} >
               
                 <ScrollView style={styles.container}>
-                    <View style={{ marginTop: 20, marginLeft: 20, backgroundColor: "white", width: 80,height:40, borderRadius:19, backgroundColor:'white',display:'flex',flexDirection:'column' }}>
-                        <Text style={{ marginLeft:3,padding:5,textAlignVertical:'center',textAlign: 'center',  color: "#FF6366", fontWeight: "bold", fontSize: 23, justifyContent:'center' }}>helpy</Text>
-                    </View>
                     {err ? <Text style={{ marginLeft:3,textAlignVertical:'center',textAlign: 'center', fontWeight: "bold", fontSize: 23, justifyContent:'center' }}>Please enable location Services</Text> : null}
                     <ContactPerson contact={state.contactpersons}></ContactPerson>
                     <Alarm title="I am 100% sure that I have COVID-19."  />
