@@ -107,22 +107,22 @@ function Landing() {
                     {language == "de" ? <span class="caption">Wenn du mit SARS-CoV-2 infiziert bist, halte den Knopf gedrückt.
                     </span> : <span class="caption">If you are infected by SARS-CoV-2 hold the button.</span>}
                     <div className="cardNotification">{language == "de" ? <img src={img3} /> : <img src={img3en} />}</div>
-                    {language == "de" ? <span class="caption">Bekomme ein Nachricht, wenn eine Ihrer Kontaktpersonen infiziert ist.</span> : <span class="caption">Get notified if one of your contact persons is infected.</span>}
+                    {language == "de" ? <span class="caption">Bekomme eine Nachricht, wenn einer Ihrer Kontaktpersonen infiziert ist.</span> : <span class="caption">Get notified if one of your contact persons is infected.</span>}
                 </div>
                 :
 
                 <div style={{ display: "flex", justifyContent: 'center', flexWrap: 'wrap', marginTop: "30px" }}>
                     <div class="item">
                         <Zoom><div className="card">{language == "de" ? <img src={img1} /> : <img src={img1en} />}</div></Zoom>
-                        {language == "de" ? <span className="caption">Helpy findet und speichert Personen, mit denen Sie Kontakt haben.</span> : <span className="caption">Helpy finds and stores people with whom you have contact.</span>}
+                        {language == "de" ? <span className="caption">Helpy findet und speichert Personen, mit denen du Kontakt hast.</span> : <span className="caption">Helpy finds and stores people with whom you have contact.</span>}
                     </div>
                     <div class="item">
                         <Zoom><div className="card">{language == "de" ? <img src={img2} /> : <img src={img2en} />}</div></Zoom>
-                        {language == "de" ? <span className="caption">Wenn Sie mit SARS-CoV-2 infiziert sind, halte den roten Knopf gedrückt.</span> : <span className="caption">If you are infected with SARS-CoV-2, press and hold the button.</span>}
+                        {language == "de" ? <span className="caption">Wenn du mit SARS-CoV-2 infiziert bist, halte den Knopf gedrückt.</span> : <span className="caption">If you are infected with SARS-CoV-2, press and hold the button.</span>}
                     </div>
                     <div class="item">
                         <Zoom><div className="cardNotification">{language == "de" ? <img src={img3} /> : <img src={img3en} />}</div></Zoom>
-                        {language == "de" ? <span className="caption">Bekomme ein Nachricht, wenn eine Ihrer Kontaktpersonen infiziert ist.</span> : <span className="caption">Get notified when one of your contacts is infected.</span>}
+                        {language == "de" ? <span className="caption">Bekomme eine Nachricht, wenn einer Ihrer Kontaktpersonen infiziert ist.</span> : <span className="caption">Get notified when one of your contacts is infected.</span>}
                     </div>
                 </div>
             }
