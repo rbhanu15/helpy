@@ -20,7 +20,7 @@ const fetchNotification = dispatch => async () => {
     Authorization: auth 
     },
    });
-
+   //console.log(response.data);
   dispatch({ type: 'fetch_notifi', payload: response.data });
 };
 
@@ -30,7 +30,7 @@ const fetchNotification = dispatch => async () => {
 const alarm = dispatch => async (notification) => {
   const token = await AsyncStorage.getItem('token'); 
   const auth = "Bearer "+token;
-  console.log(auth);
+  //console.log(auth);
   await trackerApi.post('/alarm', {
     "notification": "A contact person is infected. Keep calm and stay at home for at least 2 weeks. If you have symptoms, hold the button"
    },{

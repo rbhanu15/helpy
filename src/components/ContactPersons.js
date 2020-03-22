@@ -10,6 +10,11 @@ const ContactPersons = (props) =>
 {
     // Contacts = props.contact;
     const { state } = useContext(LocationContext);
+    let count= 0;
+    if(state.count>1)
+    {
+        count = state.count - 1;
+    }
     return (
         <View style={styles.card}>
             <Image style={styles.image} source={contact}></Image>  
@@ -28,7 +33,7 @@ const ContactPersons = (props) =>
                     fontWeight: 'bold',
                     color: '#FF6366',
                     textAlign: "center"
-                }}>{state.count}</Text>                     
+                }}>{count}</Text>                     
         </View>  
 
     )

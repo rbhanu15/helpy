@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Image } from 'react-native';
+import {View, StyleSheet, Image, SafeAreaView } from 'react-native';
 import {Context as Authcontext} from '../context/AuthContext';
 import { NavigationEvents } from 'react-navigation';
 import AuthForm from '../components/AuthForm';
@@ -10,20 +10,22 @@ const SignupScreen = ({ navigation }) => {
   const { state, signup, clearErrorMessage } = useContext(Authcontext);
 
   return (
-    
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+  <View>
       <NavigationEvents onWillBlur={clearErrorMessage} />
     <AuthForm 
     headerText="Hey, Signup and help the word to fight and destroy Corona Virus" 
     errorMessage={state.errorMessage} 
     onSubmit={signup}
     buttontext="sign up"
+    loadingvalue={false}
     />
    <NavLink 
    textTitle="Already have an account? Sign in instead"
    navigatelin="signin"
    />
     </View>
+    </SafeAreaView>
 
   );
 };
