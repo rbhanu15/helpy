@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet, Image, SafeAreaView} from 'react-native';
 import { NavigationEvents } from 'react-navigation';
 import {Context} from '../context/AuthContext';
 import AuthForm from '../components/AuthForm';
@@ -9,7 +9,8 @@ const SigninScreen = () => {
   const { state, signin, clearErrorMessage } = useContext(Context);
 
  return (
-  <View style={styles.container}>
+  <SafeAreaView style={styles.container}>
+  <View>
   <NavigationEvents onWillBlur={clearErrorMessage} />
   <AuthForm 
   headerText="Welcome Back" 
@@ -22,6 +23,7 @@ const SigninScreen = () => {
  navigatelin="signup"
  />
   </View>
+  </SafeAreaView>
   );
 };
 

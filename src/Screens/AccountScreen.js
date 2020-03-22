@@ -9,7 +9,11 @@ import {Context as LocationContext} from '../context/LocationConext';
 const AccountScreen = () => { 
   const { signout} = useContext(Context);
   const { state } = useContext(LocationContext);
-
+  let count= 0;
+  if(state.count>1)
+  {
+      count = state.count - 1;
+  }
   return <SafeAreaView forceInset={{top:'always'}}>
     <Spacer>
     <Text style={{fontSize:30, alignSelf:'center'}}>My Account</Text>
@@ -26,7 +30,7 @@ const AccountScreen = () => {
           fontSize: 60,
           fontWeight: 'bold',
           color: 'black',
-        }}>{state.count}</Text>
+        }}>{count}</Text>
       </View>
     </Spacer>
     <Spacer>

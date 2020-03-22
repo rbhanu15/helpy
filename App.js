@@ -3,10 +3,12 @@ import {
   createAppContainer,
   createSwitchNavigator
 } from 'react-navigation';
+import {View, Text} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import { Ionicons } from '@expo/vector-icons';
+
 
 
 import AccountScreen from "./src/Screens/AccountScreen";
@@ -20,20 +22,12 @@ import {Provider as AuthProvider} from './src/context/AuthContext';
 import { setNavigator } from './src/NavigationRef';
 import {Provider as LocationProvider} from './src/context/LocationConext';
 import { Provider as NotifiProvider } from './src/context/NotificationContext';
-
-
+//import IconWithBadge from './src/components/IconWithBadge';
+import Notificationbadge from './src/components/Notificationbadges';
 /*import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-
-
-import IconWithBadge from './src/components/Tabbaricons';
-
-/*const NotificationIconWithBadge = props => {
-  // You should pass down the badgeCount in some other ways like context, redux, mobx or event emitters.
-  return <IconWithBadge {...props} badgeCount={3} />;
-};*/
-
+*/
 //import {registerFetchTask} from './src/Hooks/Backgroundupdate';
 
 //const INTERVAL_TASKS = 5000;
@@ -44,16 +38,40 @@ import IconWithBadge from './src/components/Tabbaricons';
 }, INTERVAL_TASKS);
 */
 
+
 const getTabBarIcon = (navigation, focused, tintColor) => {
   const { routeName } = navigation.state;
   let IconComponent = Ionicons;
   let iconName;
   if (routeName === 'Home') {
     iconName = `ios-home`;
+        // We want to add badges to home tab icon
+   
+  } else if (routeName === 'Notification') {
+    iconName = focused ? `ios-notifications`:`ios-notifications-outline`;
+    IconComponent = Notificationbadge;
+  }else{
+    if(routeName === 'Account')
+    {
+      iconName = `md-person`;
+    }
+  }
+  // You can return any component that you like here!
+  return <IconComponent name={iconName} size={25} color={tintColor} />;
+};
+
+/*const getTabBarIcon = (navigation, focused, tintColor) => {
+  const { routeName } = navigation.state;
+  let IconComponent = Ionicons;
+  let iconName;
+  if (routeName === 'Home') {
+    iconName = `ios-home`;
+    
     // We want to add badges to home tab icon
   } else if (routeName === 'Notification') {
-    iconName = `ios-notifications-outline`;
-    //IconComponent = NotificationIconWithBadge;
+    iconName = focused ? `ios-notifications`:`ios-notifications-outline`;
+    IconComponent = HomeIconWithBadge;
+
   }else{
     if(routeName === 'Account')
     {
@@ -64,7 +82,7 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
   // You can return any component that you like here!
   return <Ionicons name={iconName} size={25} color={tintColor} />;
 };
-
+*/
 
 
 const switchNavigator = createSwitchNavigator({

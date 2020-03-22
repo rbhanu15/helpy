@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Button } from 'react-native'
+import { StyleSheet, View, TouchableOpacity} from 'react-native'
 import {Text} from 'react-native-elements';
 
 
@@ -8,7 +8,9 @@ const AuthhomeScreen = ({ navigation })=> {
             <View style={styles.Container}>
                 <View elevation={10} style={styles.Textcontainer}> 
                     <Text style={{fontSize:70, fontWeight:'bold',color:'white'}}>Together</Text>
-                    <Text style={{fontSize:55, marginLeft:40, color:'white', letterSpacing:1, textDecorationLine:'line-through'}}>We Fight Corona</Text>
+                    <Text style={{fontSize:55, marginLeft:40, color:'white', letterSpacing:1}}>We Fight Corona
+                    </Text>
+                   
                 </View>
                 <View style={styles.downcontainer}>
                     <TouchableOpacity elevation={10} style={styles.buttom} onPress={() => navigation.navigate('signin')}>
@@ -38,6 +40,7 @@ const styles = StyleSheet.create({
         display:"flex",
         flex:1,
         backgroundColor: '#f955'
+        //'#'
     },
     Textcontainer:{
         margin:25,
@@ -64,6 +67,9 @@ const styles = StyleSheet.create({
         marginVertical:5,
         marginHorizontal:15,
         borderRadius:10,
+        /*borderColor:'#FF6366',
+        borderLeftWidth:3,
+        borderRightWidth:3,*/
         height:89,
         justifyContent:'center',
         alignItems:'center',

@@ -11,11 +11,13 @@ const NotifiScreen = ({ navigation })=> {
     const { state, fetchNotification } = useContext(NotificationContext);
     //console.log([state]);
     //console.log(notifi);
+    let count = state.notification;
+    //console.log(count);
     useEffect
     return (
             <SafeAreaView forceInset={{top:'always'}} style={styles.container} >
             <NavigationEvents onWillFocus={fetchNotification} />
-            {state ? <FlatList
+            {count ? <FlatList
                     data={[state]}
                     keyExtractor={ ( item, index) => 'item._id'+index}
                     renderItem={({ item }) => {
