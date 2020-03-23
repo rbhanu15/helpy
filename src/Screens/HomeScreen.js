@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, ScrollView, Dimensions, Image, AsyncStorage } f
 import Alarm from '../components/alarm';
 import SafeAreaView from 'react-native-safe-area-view';
 import  { requestPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location';
+import { Context as NotificationContext } from '../context/NotificationContext';
 
 
 //HOC
@@ -15,9 +16,38 @@ import Donate from "../components/Donate"
 
 
 
-const HomeScreen = () => {
+
+const HomeScreen = (props) => {
     const { state, addLocation } = useContext(LocationContext);
     const [err, setErr] = useState(null);
+    const { fetchNotification } = useContext(NotificationContext);
+
+    let { t, locale } = props.screenProps; 
+    const contactperson = t('Your_Contact_Persons');
+
+    const buttontext = t('Hold_if_you_have');
+    const halten = t('Hold');
+    const warning = t('Warning');
+    const warningtitle = t('warningtitle');
+    const yes = t('yes');
+    const no = t('no');
+
+    const titlesympt = t('Symptom');
+    const fever = t('fever');
+    const Cough = t('Cough');
+    const Shortness = t('Shortness');
+    const Dificultiy = t('Dificultiy');
+    const symtext = t('symtext');
+    const who = t('who');
+    
+    const howtitle = t('worktitel');
+    const howtext = t('worktext');
+    const share = t('workbutton');
+
+
+    const supporttitle= t('suptitle');
+    const supporttext =t('suptext');
+    const coffe = t('coffe');
 
     const startWatching = async () => {
       try {
@@ -40,6 +70,7 @@ const HomeScreen = () => {
 
     useEffect(()=>{
       startWatching();
+      fetchNotification();
     },[]);
 
     /*const contacts = await AsyncStorage.getItem('contactpersons');
@@ -49,11 +80,26 @@ const HomeScreen = () => {
               
                 <ScrollView style={styles.container}>
                     {err ? <Text style={{ marginLeft:3,textAlignVertical:'center',textAlign: 'center', fontWeight: "bold", fontSize: 23, justifyContent:'center' }}>Please enable location Services</Text> : null}
-                    <ContactPerson contact={state.contactpersons}></ContactPerson>
-                    <Alarm title="I am 100% sure that I have COVID-19."  />
-                    <Symptoms></Symptoms>
-                    <Info></Info>
-                    <Donate></Donate>
+                    <ContactPerson text={contactperson} contact={state.contactpersons}></ContactPerson>
+                    <Alarm text={buttontext} halten={halten} warning={warning} warningtitle={warningtitle} yes={yes} no={no}/>
+                    <Symptoms title={titlesympt}
+                    fever={fever}
+                    Cough={Cough}
+                    Shortness={Shortness}
+                    Dificultiy={Dificultiy}
+                    symtext={symtext}
+                    who={who}
+                    ></Symptoms>
+                    <Info
+                    title={howtitle}
+                    text={howtext}
+                    share={share}
+                    ></Info>
+                    <Donate
+                    title={supporttitle}
+                    text={supporttext}
+                    coffe={coffe}
+                    ></Donate>
                 </ScrollView>
             </SafeAreaView>
         )

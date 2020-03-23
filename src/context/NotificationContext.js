@@ -31,8 +31,9 @@ const alarm = dispatch => async (notification) => {
   const token = await AsyncStorage.getItem('token'); 
   const auth = "Bearer "+token;
   //console.log(auth);
+  //A contact person is infected. Keep calm and stay at home for at least 2 weeks. If you have symptoms, hold the button
   await trackerApi.post('/alarm', {
-    "notification": "A contact person is infected. Keep calm and stay at home for at least 2 weeks. If you have symptoms, hold the button"
+    "notification": "Eine Kontaktperson ist infiziert. Bleib ruhig und bleib mindestens 2 Wochen zu Hause. Wenn Sie Symptome haben, halten Sie die Taste gedrückt."
    },{
     headers: {
     Authorization: auth 

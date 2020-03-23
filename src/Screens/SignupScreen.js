@@ -1,27 +1,34 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Image, SafeAreaView } from 'react-native';
+import {View, Text, StyleSheet, Image, SafeAreaView } from 'react-native';
 import {Context as Authcontext} from '../context/AuthContext';
 import { NavigationEvents } from 'react-navigation';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
 
-const SignupScreen = ({ navigation }) => { 
+const SignupScreen = ({ navigation, screenProps }) => { 
 
   const { state, signup, clearErrorMessage } = useContext(Authcontext);
+  let { t, locale } = screenProps; 
+  const signupbuttom = t('signup');
+  const signuptext = t('siguptext');
+  const already = t('alreadyhav');
+  const passwordtext = t('passtext');
 
   return (
     <SafeAreaView style={styles.container}>
   <View>
       <NavigationEvents onWillBlur={clearErrorMessage} />
     <AuthForm 
-    headerText="Hey, Signup and help the word to fight and destroy Corona Virus" 
+    headerText={signuptext} 
     errorMessage={state.errorMessage} 
     onSubmit={signup}
-    buttontext="sign up"
+    buttontext={signupbuttom}
     loadingvalue={false}
+    passwordtext={passwordtext}
     />
+    <Text style={{marginHorizontal:15, marginBottom:15}}>Durch Klicken auf Registrierung stimmen Sie den Allgemeinen Geschäftsbedingungen zu</Text>
    <NavLink 
-   textTitle="Already have an account? Sign in instead"
+   textTitle={already}
    navigatelin="signin"
    />
     </View>

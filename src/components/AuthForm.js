@@ -5,11 +5,13 @@ import Spacer from './Spacer';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 
-const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue }) => {
+const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue, passwordtext }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userposition, setloc] = useState('');
     const [showindicator, setShowind] = useState(false);
+
+
 
     useEffect(()=>{
         _getLocationAsync();
@@ -34,7 +36,7 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue 
     return(
       <>
         <Spacer>
-        <Text h3>{headerText}</Text>
+        <Text h3 style={{marginTop:59}}>{headerText}</Text>
         </Spacer>
         <Input label="Email" 
         value={email} 
@@ -43,7 +45,7 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue 
         autoCorrect={false}
         />
         <Spacer />
-        <Input label="Password" 
+        <Input label={passwordtext} 
         value={password} 
         onChangeText={setPassword} 
         autoCapitalize="none"

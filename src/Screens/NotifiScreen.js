@@ -5,31 +5,40 @@ import SafeAreaView from 'react-native-safe-area-view';
 import { ListItem } from 'react-native-elements';
 import { Context as NotificationContext } from '../context/NotificationContext';
 import notifiphoto from "../img/notifphoto.png";
+import Relax from '../img/relaxing.png';
 
 
-const NotifiScreen = ({ navigation })=> {
+const NotifiScreen = ({ navigation, screenProps })=> {
     const { state, fetchNotification } = useContext(NotificationContext);
+    let { t, locale } = screenProps; 
+
     //console.log([state]);
     //console.log(notifi);
     let count = state.notification;
+    const defaulttext = t('notifications');
+
     //console.log(count);
     useEffect
     return (
             <SafeAreaView forceInset={{top:'always'}} style={styles.container} >
             <NavigationEvents onWillFocus={fetchNotification} />
-            {count ? <FlatList
+            {count ? <View style={styles.card}>
+                <FlatList
                     data={[state]}
                     keyExtractor={ ( item, index) => 'item._id'+index}
                     renderItem={({ item }) => {
                     return (
+                
                         <TouchableOpacity style={{margin:20, flex:1, display:'flex'}}>
                         <ListItem chevron title={item.notification} />
+                        <Image source={Relax} style={{height:300,width:300}} />
                         </TouchableOpacity>
+
                     );
                     }}/>
+                    </View>
                     : <View style={styles.card}>
-                    <Text style={{padding:20, fontSize:20}}>No one in your Contact Person 
-                    have corona and you are Healthy. </Text>
+                    <Text style={{padding:20, fontSize:20}}>{defaulttext}</Text>
                     <Image style={styles.image}source={notifiphoto}></Image>  
                 </View>
             }
