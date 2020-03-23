@@ -35,22 +35,22 @@ const styles = StyleSheet.create({
 const slides = [
   {
     key: "somethun",
-    title: "Helpy finds your contact persons.",
-    text: "As long as Helpy is open, we will find contact persons.",
+    title: "English: Helpy finds your contact persons.\nDeutsch: Helpy findet deine Konatpersonen.",
+    text: "As long as Helpy is open, we will find contact persons.\nDeutsch: Solange Helpy geöffnet ist finden wir deine Kontaktpersonen.",
     icon: "ios-search",
     colors: ["#FF6366", "#FF6366"],
   },
   {
     key: "somethun1",
-    title: "Are you infected?",
-    text: "If you are infected then hold the button and Helpy notifies your contact persons.",
+    title: "English: Are you infected?\nDeutsch: Du bist infisziert?",
+    text: "If you are infected then hold the button and Helpy notifies your contact persons.\nDeutsch: Wenn du infisziert bist halte den Knopf gedrückt damit Helpy deine Konaktpersonen benachrichtigt.",
     icon: "ios-contacts",
     colors: ["#EB4E68", "#EB4E68"],
   },
   {
     key: "somethun2",
-    title: "Finished",
-    text: "You are ready to go.\n Remember your data is save and anonymous.",
+    title: "Finished\nDeutsch: Fertig",
+    text: "You are ready to go.\n Remember your data is save and anonymous.\nDeutsch: Du kannst die App nun benutzen. Denke daran, dass Helpy deine Daten sichern und Anonym speichert.",
     icon: "ios-checkmark-circle-outline",
     colors: ["#2F2E41", "#2F2E41"],
   },
