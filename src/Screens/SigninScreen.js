@@ -5,21 +5,27 @@ import {Context} from '../context/AuthContext';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
 
-const SigninScreen = () => { 
+const SigninScreen = ({ navigation, screenProps }) => { 
   const { state, signin, clearErrorMessage } = useContext(Context);
+  let { t, locale } = screenProps; 
+  const signinbuttom = t('signin');
+  const signintext = t('signintext');
+  const donthave = t('donthave');
+  const passwordtext = t('passtext');
 
  return (
   <SafeAreaView style={styles.container}>
   <View>
   <NavigationEvents onWillBlur={clearErrorMessage} />
   <AuthForm 
-  headerText="Welcome Back" 
+  headerText={signintext} 
   errorMessage={state.errorMessage} 
   onSubmit={signin}
-  buttontext="Sign In"
+  buttontext={signinbuttom}
+  passwordtext={passwordtext}
   /> 
  <NavLink 
- textTitle="Dont have an account? Sign Up instead"
+ textTitle={donthave}
  navigatelin="signup"
  />
   </View>

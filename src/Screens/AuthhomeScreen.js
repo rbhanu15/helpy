@@ -3,24 +3,29 @@ import { StyleSheet, View, TouchableOpacity} from 'react-native'
 import {Text} from 'react-native-elements';
 
 
-const AuthhomeScreen = ({ navigation })=> {
+const AuthhomeScreen = ({ navigation, screenProps  })=> {
+    let { t, locale } = screenProps; 
+    const signinbuttom = t('signin');
+    const signupbuttom = t('signup');
+    const Together = t('togheter');
+    const Fight = t('fight');
         return (
             <View style={styles.Container}>
                 <View elevation={10} style={styles.Textcontainer}> 
-                    <Text style={{fontSize:70, fontWeight:'bold',color:'white'}}>Together</Text>
-                    <Text style={{fontSize:55, marginLeft:40, color:'white', letterSpacing:1}}>We Fight Corona
+                    <Text style={{fontSize:45, fontWeight:'bold',color:'white'}}>{Together}</Text>
+                    <Text style={{fontSize:35 ,marginHorizontal:20,marginTop:10, color:'white', letterSpacing:1,}}>{Fight}
                     </Text>
                    
                 </View>
                 <View style={styles.downcontainer}>
                     <TouchableOpacity elevation={10} style={styles.buttom} onPress={() => navigation.navigate('signin')}>
                         <Text style={{color:'black',fontWeight:'bold'}}>
-                            Sign In</Text>
+                            {signinbuttom}</Text>
                     </TouchableOpacity>
                    
                     <TouchableOpacity elevation={10} style={styles.buttom} onPress={() => navigation.navigate('signup')}>
                         <Text style={{color:'black',fontWeight:'bold'}}>
-                            Sign Up
+                        {signupbuttom}
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -47,7 +52,8 @@ const styles = StyleSheet.create({
         display:"flex",
         flex:2,
         borderRadius:20,
-        justifyContent:'space-evenly',
+        //justifyContent:'space-evenly',
+        justifyContent:'center',
         alignItems:'center',
         alignContent:'stretch',
         backgroundColor:'#FF5F8B',

@@ -24,6 +24,7 @@ import {Provider as LocationProvider} from './src/context/LocationConext';
 import { Provider as NotifiProvider } from './src/context/NotificationContext';
 //import IconWithBadge from './src/components/IconWithBadge';
 import Notificationbadge from './src/components/Notificationbadges';
+
 /*import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
@@ -37,6 +38,89 @@ import * as Permissions from 'expo-permissions';
   console.log('Rodando em background');
 }, INTERVAL_TASKS);
 */
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+
+// Set the key-value pairs for the different languages you want to support.
+
+const en = {
+  My_Account:'my Account',
+  signup:'signup',
+  signin:'signin',
+  signintext: 'welcome Back',
+  signout:'signout',
+  passtext: 'Password',
+  siguptext: 'Hey, Signup and help the world to fight and destroy Corona Virus',
+  alreadyhav:'Already have an account? Sign in instead',
+  agb:'By clicking on signup you agree to the general terms and conditions',
+  donthave:'Dont have an account? Sign Up instead',
+  togheter:'Together',
+  fight:'We Fight Corona',
+  Your_Contact_Persons: 'Your Contact Persons',
+  Hold_if_you_have:'Hold if you have SARS-CoV-2', 
+  Hold: 'Hold',
+  Warning: 'Are you 100% sure you have COVID-19? This action cannot be canceled!',
+  warningtitle: 'Warning',
+  Symptom: 'symptoms',
+  fever: 'Fever',
+  Cough: 'Cough',
+  Shortness: 'Shortness of breath',
+  Dificultiy: 'Difficulty breathing',
+  symtext: 'Signs and symptoms of COVID-19 may appear two to 14 days after exposure.',
+  who: 'Visit who.it for more information',
+  worktitel: 'How Helpy works',
+  worktext: 'As soon as you press the red button all contact persons will be notified. In this way other persons can prepare and can stay at home.',
+  workbutton: 'share Helpy',
+  suptitle: 'Support Helpy',
+  suptext:'We are a team of 3 students from Germany and would be grateful for any support.',
+  coffe:'Buy us a coffee',
+  notifications:'No one in your Contact Person have corona and you are Healthy.',
+  yes:'Yes',
+  no:'No'
+};
+
+const de = {
+  My_Account:'Mein Konto',
+  agb:'Durch Klicken auf Registrierung stimmen Sie den Allgemeinen Geschäftsbedingungen zu',
+  togheter:'Gemeinsam',
+  fight:'Wir kämpfen gegen Corona',
+  signup:'registrieren',
+  signin:'Anmelden',
+  signintext: 'willkommen zurück',
+  passtext: 'Passwort',
+  signout:'Abmelden',
+  siguptext: 'Hey, melde dich an und hilf dem Welt, das Corona-Virus zu bekämpfen und zu zerstören',
+  alreadyhav:'Sie haben bereits ein Konto? Melden Sie sich stattdessen an',
+  donthave:'Sie haben noch kein Konto? Melden Sie sich stattdessen an',
+  Your_Contact_Persons: 'Deine Kontaktpersonen',
+  Hold_if_you_have:'Bei Symptomen gedruckt halten', 
+  Hold: 'halten',
+  Warning:'Sind Sie zu 100% sicher, dass Sie COVID-19 haben? Diese Aktion kann nicht abgebrochen werden!',
+  warningtitle: 'Warnung',
+  Symptom: 'Symptomen',
+  fever: 'Fieber',
+  Cough: 'Husten',
+  Shortness: 'Kurzatmigkeit',
+  Dificultiy: 'Atembeschwerden',
+  symtext: 'Anzeichen und Symptome von COVID-19 können zwei bis 14 Tage nach der Exposition auftreten.',
+  who:'Besuchen Sie who.it für weitere Informationen',
+  worktitel: 'Wie Helpy funktioniert',
+  worktext: 'Sobald Sie den roten Knopf drücken, werden alle Kontaktpersonen benachrichtigt. Auf diese Weise können sich andere Personen vorbereiten und zu Hause bleiben.',
+  workbutton: 'Teile Helpy',
+  suptitle: 'Unterstützen Sie Helpy',
+  suptext: 'Wir sind ein Team von 3 Studenten aus dem Ostalbkreis und wären für jede Unterstützung dankbar.',
+  coffe:'Kaufen Sie uns einen Kaffee',
+  notifications:'Niemand in Ihrer Kontaktperson ist mit Corona-Virus Infiziert und Sie sind gesund.',
+  yes:'Ja',
+  no:'nein'
+
+};
+
+i18n.fallbacks = true;
+i18n.translations = { de, en };
+
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true;
 
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
@@ -113,11 +197,27 @@ const App = createAppContainer(switchNavigator);
 
 export default () => {
 
+  const [ locale ] = useState(Localization.locale);
+
+  
+  /*setLocale = locale => {
+    setLocale({ locale });
+  };*/
+
+  t = (scope, options) => {
+    return i18n.t(scope, { locale: locale, ...options });
+  };
+
   return(
     <NotifiProvider>
       <LocationProvider>
         <AuthProvider>
-          <App ref={(navigator) => { setNavigator(navigator) }} />
+          <App ref={(navigator) => { setNavigator(navigator) }} 
+          screenProps={{
+            t: this.t,
+            locale: locale,
+          }}
+          />
         </AuthProvider>
       </LocationProvider>
     </NotifiProvider>

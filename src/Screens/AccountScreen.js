@@ -6,9 +6,13 @@ import Spacer from '../components/Spacer';
 import {Context} from '../context/AuthContext';
 import {Context as LocationContext} from '../context/LocationConext';
 
-const AccountScreen = () => { 
+const AccountScreen = (props) => { 
   const { signout} = useContext(Context);
   const { state } = useContext(LocationContext);
+  let { t, locale } = props.screenProps; 
+  const contactperson = t('Your_Contact_Persons');
+  const myacc = t('My_Account');
+  const signoutb = t('signout');
   let count= 0;
   if(state.count>1)
   {
@@ -16,7 +20,7 @@ const AccountScreen = () => {
   }
   return <SafeAreaView forceInset={{top:'always'}}>
     <Spacer>
-    <Text style={{fontSize:30, alignSelf:'center'}}>My Account</Text>
+    <Text style={{fontSize:30, alignSelf:'center'}}>{myacc}</Text>
     </Spacer>
     <Spacer>
       <View style={{ paddingTop: 40, display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -25,7 +29,7 @@ const AccountScreen = () => {
           fontSize: 20,
           fontWeight: 'bold',
           color: 'grey',
-        }}>Number of people that i have had contact with:</Text>
+        }}>{contactperson}</Text>
         <Text style={{
           fontSize: 60,
           fontWeight: 'bold',
@@ -34,7 +38,7 @@ const AccountScreen = () => {
       </View>
     </Spacer>
     <Spacer>
-       <Button title="Sign Out" onPress={signout} />
+       <Button title={signoutb} onPress={signout} />
     </Spacer>
     
     </SafeAreaView>
