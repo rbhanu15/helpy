@@ -193,7 +193,7 @@ const switchNavigator = createSwitchNavigator({
   })
 });
 
-const App = createAppContainer(switchNavigator);
+const RealApp = createAppContainer(switchNavigator);
 
 export default () => {
 
@@ -212,7 +212,7 @@ export default () => {
     <NotifiProvider>
       <LocationProvider>
         <AuthProvider>
-          <App ref={(navigator) => { setNavigator(navigator) }} 
+          <RealApp ref={(navigator) => { setNavigator(navigator) }} 
           screenProps={{
             t: this.t,
             locale: locale,
