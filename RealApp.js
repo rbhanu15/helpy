@@ -130,7 +130,6 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
   if (routeName === 'Home') {
     iconName = `ios-home`;
         // We want to add badges to home tab icon
-
   } else if (routeName === 'Notification') {
     iconName = focused ? `ios-notifications`:`ios-notifications-outline`;
     IconComponent = Notificationbadge;
@@ -150,7 +149,6 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
   let iconName;
   if (routeName === 'Home') {
     iconName = `ios-home`;
-
     // We want to add badges to home tab icon
   } else if (routeName === 'Notification') {
     iconName = focused ? `ios-notifications`:`ios-notifications-outline`;
@@ -193,12 +191,45 @@ const switchNavigator = createSwitchNavigator({
   })
 });
 
+import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, View, Text, Image, I18nManager, AsyncStorage } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import RealApp from "./RealApp";
+
+I18nManager.forceRTL(false);
+
+const styles = StyleSheet.create({
+  mainContent: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  image: {
+    width: 320,
+    height: 320,
+  },
+  text: {
+    color: "white",
+    backgroundColor: "transparent",
+    textAlign: "center",
+    paddingHorizontal: 16,
+  },
+  title: {
+    fontSize: 22,
+    color: "white",
+    backgroundColor: "transparent",
+    textAlign: "center",
+    marginBottom: 16,
+  },
+});
+
 const RealApp = createAppContainer(switchNavigator);
 
 export default () => {
 
   const [ locale ] = useState(Localization.locale);
-
 
   /*setLocale = locale => {
     setLocale({ locale });
@@ -221,6 +252,7 @@ export default () => {
         </AuthProvider>
       </LocationProvider>
     </NotifiProvider>
+<<<<<<< HEAD
   );
 };
 
@@ -300,3 +332,99 @@ export default () => {
     console.log("Received new locations for user = ",locations);
   }
 });*/
+const slides = [
+  {
+    key: "somethun",
+    title: "English: Helpy finds your contact persons.\nDeutsch: Helpy findet deine Konatpersonen.",
+    text: "As long as Helpy is open, we will find contact persons.\nDeutsch: Solange Helpy geöffnet ist finden wir deine Kontaktpersonen.",
+    icon: "ios-search",
+    colors: ["#FF6366", "#FF6366"],
+  },
+  {
+    key: "somethun1",
+    title: "English: Are you infected?\nDeutsch: Du bist infisziert?",
+    text: "If you are infected then hold the button and Helpy notifies your contact persons.\nDeutsch: Wenn du infisziert bist halte den Knopf gedrückt damit Helpy deine Konaktpersonen benachrichtigt.",
+    icon: "ios-contacts",
+    colors: ["#EB4E68", "#EB4E68"],
+  },
+  {
+    key: "somethun2",
+    title: "Finished\nDeutsch: Fertig",
+    text: "You are ready to go.\n Remember your data is save and anonymous.\nDeutsch: Du kannst die App nun benutzen. Denke daran, dass Helpy deine Daten sichern und Anonym speichert.",
+    icon: "ios-checkmark-circle-outline",
+    colors: ["#2F2E41", "#2F2E41"],
+  },
+];
+
+export default class App extends React.Component {
+  componentDidMount() {
+    AsyncStorage.getItem("first_item").then((value) => {
+      this.setState({ showRealApp: value });
+    });
+  }
+  state = { showRealApp: false };
+  _renderItem = ({ item, dimensions }) => (
+    <LinearGradient
+      style={[
+        styles.mainContent,
+        {
+          flex: 1,
+          paddingTop: item.topSpacer,
+          paddingBottom: item.bottomSpacer,
+          width: dimensions.width,
+        },
+      ]}
+      colors={item.colors}
+      start={{ x: 0, y: 0.1 }}
+      end={{ x: 0.1, y: 1 }}
+    >
+      <Ionicons
+        style={{ backgroundColor: 'transparent' }}
+        name={item.icon}
+        size={200}
+        color="white"
+      />
+      <View>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.text}>{item.text}</Text>
+      </View>
+    </LinearGradient>
+>>>>>>>> master:App.js
+  );
+  _onDone = () => {
+    // User finished the introduction. Show real app through
+    // navigation or simply by controlling state
+    // this.setState({ showRealApp: true });
+    AsyncStorage.setItem("first_item", "true").then(() => {
+      this.setState({ showRealApp: true });
+    });
+  }
+  _onSkip = () => {
+    // User finished the introduction. Show real app through
+    // navigation or simply by controlling state
+    // this.setState({ showRealApp: true });
+    AsyncStorage.setItem("first_item", "true").then(() => {
+      this.setState({ showRealApp: true });
+    });
+  }
+  render() {
+    if (this.state.showRealApp)
+    {
+      return <RealApp />;
+    }
+    else
+    {
+      return (
+        <AppIntroSlider
+          slides={slides}
+          renderItem={this._renderItem}
+          showPrevButton
+          showSkipButton
+          onDone={this._onDone}
+          onSkip={this._onSkip}
+        />
+      );
+    }
+  }
+}
+>>>>>>> master

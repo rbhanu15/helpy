@@ -1,15 +1,18 @@
 import React,{useState, useContext,useEffect} from 'react';
-import {StyleSheet} from 'react-native';
+import {View,StyleSheet, ActivityIndicator} from 'react-native';
 import {Text, Input, Button } from 'react-native-elements';
 import Spacer from './Spacer';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 
-const Authform = ({ headerText, errorMessage,onSubmit, buttontext }) => {
+const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue, passwordtext }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userposition, setloc] = useState('');
-    
+    const [showindicator, setShowind] = useState(false);
+
+
+
     useEffect(()=>{
         _getLocationAsync();
       },[]);
@@ -29,10 +32,11 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext }) => {
         //console.log(userposition)
       };
 
+     
     return(
-        <>
+      <>
         <Spacer>
-         <Text h3>{headerText}</Text>
+        <Text h3 style={{marginTop:59}}>{headerText}</Text>
         </Spacer>
         <Input label="Email" 
         value={email} 
@@ -41,7 +45,7 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext }) => {
         autoCorrect={false}
         />
         <Spacer />
-        <Input label="Password" 
+        <Input label={passwordtext} 
         value={password} 
         onChangeText={setPassword} 
         autoCapitalize="none"
@@ -52,8 +56,13 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext }) => {
         <Spacer>
         <Button 
         title={buttontext} 
-        onPress={()=> onSubmit({email, password,userposition})}/>
+        onPress={()=> {
+        onSubmit({email, password,userposition});
+        setShowind(true);
+        }}
+        />
         </Spacer>
+        {showindicator && !errorMessage ?  <ActivityIndicator size="large" color="#FA5858" />: null}
         </>
     );
 };
@@ -63,6 +72,11 @@ const styles = StyleSheet.create({
         fontSize:16,
         color:'red',
         marginLeft:15
+      },
+      container: {
+        flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'column',
       },
 });
 
