@@ -19,7 +19,7 @@ const slides = [
     {
       key: "somethun1",
       title: "Bist du infiziert?\nAre you infected?",
-      text: "Wenn du infiziert bist halte den Knopf gedrückt damit Helpy deine Kontaktpersonen benachrichtigt.\n If you are infected then hold the button and Helpy notifies your contact persons.",
+      text: "Wenn du infiziert bist halte den Knopf gedrückt damit Helpy deine Kontaktpersonen benachrichtigt.\nIf you are infected then hold the button and Helpy notifies your contact persons.",
       icon: "ios-contacts",
       colors: ["#EB4E68", "#EB4E68"],
     },
