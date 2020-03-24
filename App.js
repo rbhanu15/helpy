@@ -11,33 +11,35 @@ I18nManager.forceRTL(false);
 const slides = [
     {
       key: "somethun",
-      title: "English: Helpy finds your contact persons.\nDeutsch: Helpy findet deine Konatpersonen.",
-      text: "As long as Helpy is open, we will find contact persons.\nDeutsch: Solange Helpy geöffnet ist finden wir deine Kontaktpersonen.",
+      title: " Helpy findet deine Konatpersonen.\n Helpy finds your contact persons.",
+      text: "Solange Helpy geöffnet ist finden wir deine Kontaktpersonen.\nAs long as Helpy is open, we will find contact persons.",
       icon: "ios-search",
       colors: ["#FF6366", "#FF6366"],
     },
     {
       key: "somethun1",
-      title: "English: Are you infected?\nDeutsch: Du bist infisziert?",
-      text: "If you are infected then hold the button and Helpy notifies your contact persons.\nDeutsch: Wenn du infisziert bist halte den Knopf gedrückt damit Helpy deine Konaktpersonen benachrichtigt.",
+      title: "Bist du infisziert?\nAre you infected?",
+      text: "Wenn du infisziert bist halte den Knopf gedrückt damit Helpy deine Konaktpersonen benachrichtigt.\n If you are infected then hold the button and Helpy notifies your contact persons.",
       icon: "ios-contacts",
       colors: ["#EB4E68", "#EB4E68"],
     },
     {
       key: "somethun2",
-      title: "Finished\nDeutsch: Fertig",
-      text: "You are ready to go.\n Remember your data is save and anonymous.\nDeutsch: Du kannst die App nun benutzen. Denke daran, dass Helpy deine Daten sichern und Anonym speichert.",
+      title: "Fertig\nFinished",
+      text: "Du kannst die App nun benutzen. Denke daran, dass Helpy deine Daten sichern und Anonym speichert.\nYou are ready to go.Remember your data is save and anonymous.\n",
       icon: "ios-checkmark-circle-outline",
       colors: ["#2F2E41", "#2F2E41"],
     },
   ];
   
   export default class App extends React.Component {
+    
     componentDidMount() {
       AsyncStorage.getItem("first_item").then((value) => {
         this.setState({ showRealApp: value });
       });
     }
+
     state = { showRealApp: false };
     _renderItem = ({ item, dimensions }) => (
       <LinearGradient

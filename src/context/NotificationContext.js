@@ -33,7 +33,7 @@ const alarm = dispatch => async (notification) => {
   //console.log(auth);
   //A contact person is infected. Keep calm and stay at home for at least 2 weeks. If you have symptoms, hold the button
   await trackerApi.post('/alarm', {
-    "notification": "Eine Kontaktperson ist infiziert. Bleib ruhig und bleib mindestens 2 Wochen zu Hause. Wenn Sie Symptome haben, halten Sie die Taste gedrückt."
+    "notification": "Eine Kontaktperson ist infiziert. Bleib ruhig und bleib mindestens 2 Wochen zu Hause. Wenn Sie Symptome haben, halten Sie die Taste gedrückt.\n \nA contact person is infected. Keep calm and stay at home for at least 2 weeks. If you have symptoms, hold the button"
    },{
     headers: {
     Authorization: auth 
