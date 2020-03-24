@@ -10,6 +10,7 @@ npm-debug.*
 web-build/
 web-report/
 
+helpy-landing/node_modules/**/*
 # Backend
 track-server/node_modules/**/*
 
