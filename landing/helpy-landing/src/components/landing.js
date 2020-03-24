@@ -21,6 +21,8 @@ import Zoom from "react-reveal/Zoom"
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
+import "video-react/dist/video-react.css";
+import { Player } from 'video-react';
 
 import {
 
@@ -30,6 +32,7 @@ import {
 function Landing() {
 
     const [language, setlanguage] = useState("de");
+    const [apk, setApk] = useState(false);
 
     const style =
     {
@@ -88,13 +91,30 @@ function Landing() {
             <Zoom><div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button data-tip="Comming soon" className="download">IOS</button>
                 <button data-tip="Comming soon" className="download">ANDROID</button>
+                
             </div></Zoom>
+            <Zoom><div style={{ display: 'flex', justifyContent: 'center' }}>
+                <button onClick={() => setApk(!apk)} className="download" style={{ width: '250px', marginTop: "-30px" }}>{language == "de" ? <a href='/text.apk' download>Download Apk für Android</a> : <a href='/text.apk' download>Download Apk für Android</a>}</button>
+                
+            </div></Zoom >
+            {apk ? <div style={{ maxWidth: "400px", margin: '0 auto', marginBottom: "50px" }}>
+                
+                {language == "de" ? <h2 style={{ paddingBottom: "20px" }}>Wie installiert man eine APK?</h2> : <h2 style={{ paddingBottom: "20px" }}>How to install an APK?</h2>}
+                <Player
+                    playsInline
+                    poster="/assets/poster.png"
+                    src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+                />
+            </div> 
+            : 
+            <div></div>}
+            
 
             <Zoom><h2 style={{ fontSize: "20px" }}>{language == "de" ? <p style={{ margin: "0" }}>
-                Es schwierig und mühsam die Personen auszusortieren, mit welchen die
+                Es ist schwierig und mühsam die Personen auszusortieren, mit welchen die
         infizierte Person Kontakt hatte.</p> : <p style={{ margin: "0" }}>It is currently difficult to classify an infected person's contacts.</p>}</h2></Zoom>
 
-            <ReactTooltip place="bottom" type="error" effect="solid" textColor='#2F2E41' backgroundColor='#FF6366' />
+            <ReactTooltip place="top" type="error" effect="solid" textColor='#2F2E41' backgroundColor='#FF6366' />
 
             <Zoom><h2 style={{ paddingBottom: "10px", paddingTop: "100px" }}>{language == "de" ? <div>
                 Wie funktioniert helpy?</div> : <div>How does helpy work?</div>}</h2></Zoom>
@@ -122,7 +142,7 @@ function Landing() {
                     </div>
                     <div class="item">
                         <Zoom><div className="cardNotification">{language == "de" ? <img src={img3} /> : <img src={img3en} />}</div></Zoom>
-                        {language == "de" ? <span className="caption">Bekomme eine Nachricht, wenn einer Ihrer Kontaktpersonen infiziert ist.</span> : <span className="caption">Get notified when one of your contacts is infected.</span>}
+                        {language == "de" ? <span className="caption">Du bekommst eine Nachricht, wenn einer deiner Kontaktpersonen infiziert ist.</span> : <span className="caption">Get notified when one of your contacts is infected.</span>}
                     </div>
                 </div>
             }

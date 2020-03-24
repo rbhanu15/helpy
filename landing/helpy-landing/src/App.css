@@ -20,6 +20,18 @@ body::-webkit-scrollbar-thumb
     border-radius: 50px;
 }
 
+a
+{
+    text-decoration: none;
+    color: #2F2E41;
+}
+
+.download:hover a
+{
+    text-decoration: none;
+    color: #FF6366;
+}
+
 h1
 {
     color: #FF6366;
