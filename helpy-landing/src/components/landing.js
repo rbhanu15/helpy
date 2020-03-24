@@ -107,7 +107,7 @@ function Landing() {
                 />
             </div> 
             : 
-            <div>Nicht geöffnet</div>}
+            <div></div>}
             
 
             <Zoom><h2 style={{ fontSize: "20px" }}>{language == "de" ? <p style={{ margin: "0" }}>
