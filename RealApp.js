@@ -119,8 +119,7 @@ const de = {
 i18n.fallbacks = true;
 i18n.translations = { de, en };
 
-// When a value is missing from a language it'll fallback to another language with the key present.
-i18n.fallbacks = true;
+
 
 
 const getTabBarIcon = (navigation, focused, tintColor) => {
