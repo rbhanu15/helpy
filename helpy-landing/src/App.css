@@ -74,6 +74,31 @@ h4
     padding: 10px;
     font-weight: bold;
     font-size: 18px;
+    background-color: #2F2E41;
+    border-radius: 20px;
+    width: 120px;
+    margin: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    color:  #FF6366;
+    border: none;
+    text-decoration: none;
+    outline:none!important;
+}
+
+.download:hover
+{
+    background-color: #2F2E41;
+    color: #FF6366;
+}
+
+
+.download2
+{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
     background-color: #FF6366;
     border-radius: 20px;
     width: 120px;
@@ -81,13 +106,19 @@ h4
     margin-left: 5px;
     margin-right: 5px;
     text-align: center;
-    color: #2F2E41;
+    color:  #2F2E41;
     border: none;
     text-decoration: none;
     outline:none!important;
 }
 
-.download:hover
+.download2:hover
+{
+    background-color: #2F2E41;
+    color: #FF6366;
+}
+
+.download2:hover a
 {
     background-color: #2F2E41;
     color: #FF6366;
