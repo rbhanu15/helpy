@@ -21,7 +21,7 @@ const Alarm = props => {
 
     return (
         <Card elevation={20} cornerRadius={19} style={{  padding: 10, marginLeft: 20, marginRight: 20 }}>
-            <Text style={{ padding: 10, alignSelf: 'center', color: "#2F2E41", fontWeight: "bold", fontSize: 30 }}>{text}</Text>
+            <Text style={{ display:'flex', flex:1,padding: 10, alignSelf: 'center', color: "#2F2E41", fontWeight: "bold", fontSize: 30}}>{text}</Text>
             <TouchableOpacity onLongPress={() => setdialogVisible(true)} style={styles.buttom}>
                 <Image source={icon} style={styles.buttomimage} ></Image>
          <Text style={{ alignSelf: 'center', color: "#000", fontWeight: "bold", fontSize: 20, opacity:0.8 }}>{halten}</Text>
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     card:{
         padding: 30,
         margin: 40,
-        
         height:300,
         borderWidth:5,
         borderColor:'black',
@@ -80,12 +79,13 @@ const styles = StyleSheet.create({
         display:'flex',
         flex:1,
         marginHorizontal: 30,
-        marginTop:30, 
+        marginTop:45,
+        marginBottom:30, 
         alignSelf: 'center',
         borderRadius: 70, 
         backgroundColor: "#FF6366", 
-        width: 120, 
-        height: 120, 
+        width: 130, 
+        height: 130, 
         borderWidth: 4, 
         borderColor: '#B44747',
         justifyContent:'center',

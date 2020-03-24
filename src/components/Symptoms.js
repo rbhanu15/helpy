@@ -35,7 +35,7 @@ const Symptoms = (props) => {
                         </View>
                     </View>
 
-                    <Text style={{ fontSize: 20, textAlign: 'justify', paddingTop: 20}}>
+                    <Text style={{ fontSize: 20, paddingTop: 20}}>
                         {symtext}
                     </Text>
 

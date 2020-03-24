@@ -31,6 +31,7 @@
     "android": {
       "package": "com.CEA.Helpyapp",
       "versionCode": 1
-    }
+    },
+    "description": ""
   }
 }

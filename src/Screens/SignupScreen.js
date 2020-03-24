@@ -4,6 +4,7 @@ import { Context as Authcontext } from '../context/AuthContext';
 import { NavigationEvents } from 'react-navigation';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
+import Spacer from '../components/Spacer.js';
 
 const SignupScreen = ({ navigation, screenProps }) => {
 
@@ -18,6 +19,7 @@ const SignupScreen = ({ navigation, screenProps }) => {
     <SafeAreaView style={styles.container}>
       <View>
         <NavigationEvents onWillBlur={clearErrorMessage} />
+        <Spacer>
         <AuthForm
           headerText={signuptext}
           errorMessage={state.errorMessage}
@@ -26,6 +28,7 @@ const SignupScreen = ({ navigation, screenProps }) => {
           loadingvalue={false}
           passwordtext={passwordtext}
         />
+        </Spacer>
         <Text onPress={() => Linking.openURL('https://helpy-landing.now.sh/agb')} style={{ marginHorizontal: 15, marginBottom: 15 }}>Durch das Klicken auf Registrierung stimmen Sie den <Text style={{ color: "blue" }}>Allgemeinen Geschäftsbedingungen</Text> zu</Text>
         <NavLink
           textTitle={already}
