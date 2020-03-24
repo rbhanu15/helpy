@@ -5,28 +5,28 @@ import { LinearGradient } from 'expo-linear-gradient';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import RealApp from "./RealApp";
 
-I18nManager.forceRTL(false);
 
+I18nManager.forceRTL(false);
 
 const slides = [
     {
       key: "somethun",
-      title: " Helpy findet deine Konatpersonen.\n Helpy finds your contact persons.",
+      title: "Helpy findet deine Konatpersonen.\nHelpy finds your contact persons.",
       text: "Solange Helpy geöffnet ist finden wir deine Kontaktpersonen.\nAs long as Helpy is open, we will find contact persons.",
       icon: "ios-search",
       colors: ["#FF6366", "#FF6366"],
     },
     {
       key: "somethun1",
-      title: "Bist du infisziert?\nAre you infected?",
-      text: "Wenn du infisziert bist halte den Knopf gedrückt damit Helpy deine Konaktpersonen benachrichtigt.\n If you are infected then hold the button and Helpy notifies your contact persons.",
+      title: "Bist du infiziert?\nAre you infected?",
+      text: "Wenn du infiziert bist halte den Knopf gedrückt damit Helpy deine Kotaktpersonen benachrichtigt.\n If you are infected then hold the button and Helpy notifies your contact persons.",
       icon: "ios-contacts",
       colors: ["#EB4E68", "#EB4E68"],
     },
     {
       key: "somethun2",
       title: "Fertig\nFinished",
-      text: "Du kannst die App nun benutzen. Denke daran, dass Helpy deine Daten sichern und Anonym speichert.\nYou are ready to go.Remember your data is save and anonymous.\n",
+      text: "Du kannst die App nun benutzen. Denke daran, dass Helpy deine Daten sicher und Anonym speichert.\nYou are ready to go.Remember your data is save and anonymous.\n",
       icon: "ios-checkmark-circle-outline",
       colors: ["#2F2E41", "#2F2E41"],
     },
