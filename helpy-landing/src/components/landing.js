@@ -94,7 +94,7 @@ function Landing() {
                 
             </div></Zoom>
             <Zoom><div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button onClick={() => setApk(!apk)} className="download" style={{ width: '250px', marginTop: "-30px" }}>{language == "de" ? <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' download>Download Apk für Android</a> : <a href='/text.apk' download>Download Apk für Android</a>}</button>
+                <button onClick={() => setApk(!apk)} className="download2" style={{ width: '250px', marginTop: "-30px" }}>{language == "de" ? <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' download>Download Apk für Android</a> : <a href='/text.apk' download>Download Apk für Android</a>}</button>
                 
             </div></Zoom >
             {apk ? <div style={{ maxWidth: "400px", margin: '0 auto', marginBottom: "50px" }}>
@@ -107,7 +107,7 @@ function Landing() {
                 />
             </div> 
             : 
-            <div>hi</div>}
+            <div></div>}
             
 
             <Zoom><h2 style={{ fontSize: "20px" }}>{language == "de" ? <p style={{ margin: "0" }}>
