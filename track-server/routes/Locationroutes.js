@@ -44,7 +44,7 @@ router.post('/currentlocation', async (req, res)=>{
                             type: `Point`,
                             coordinates: [ user.position.coordinates[0], user.position.coordinates[1] ]
                         },
-                        $maxDistance: 50,
+                        $maxDistance: 5,
                         $minDistance: 0
                     }
                 }
