@@ -127,7 +127,7 @@ function Landing() {
                     {language == "de" ? <span class="caption">Wenn du mit SARS-CoV-2 infiziert bist, halte den Knopf gedrückt.
                     </span> : <span class="caption">If you are infected by SARS-CoV-2 hold the button.</span>}
                     <div className="cardNotification">{language == "de" ? <img src={img3} /> : <img src={img3en} />}</div>
-                    {language == "de" ? <span class="caption">Bekomme eine Nachricht, wenn einer Ihrer Kontaktpersonen infiziert ist.</span> : <span class="caption">Get notified if one of your contact persons is infected.</span>}
+                    {language == "de" ? <span class="caption">Du bekommst eine Nachricht, wenn einer deiner Kontaktpersonen infiziert ist.</span> : <span class="caption">Get notified if one of your contact persons is infected.</span>}
                 </div>
                 :
 
