@@ -29,6 +29,8 @@ import {
     Link
 } from "react-router-dom";
 
+import ReactGA from 'react-ga';
+
 function Landing() {
 
     const [language, setlanguage] = useState("de");
@@ -94,7 +96,20 @@ function Landing() {
                 
             </div></Zoom>
             <Zoom><div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button onClick={() => setApk(!apk)} className="download2" style={{ width: '250px', marginTop: "-30px" }}>{language == "de" ? <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' download>Download Apk für Android</a> : <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' download>Download APK for Android</a>}</button>
+                <button onClick={() => setApk(!apk)} className="download2" style={{ width: '250px', marginTop: "-30px" }}>
+                    {language == "de" ? <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' onClick={() => {
+                    ReactGA.event({
+                            category: 'User',
+                            action: 'Download Apk'
+                        })
+                    }} download>Download Apk für Android</a> 
+                    :
+                    <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' onClick={() => {
+                        ReactGA.event({
+                            category: 'User',
+                            action: 'Download Apk'
+                        })
+                    }} download>Download APK for Android</a>}</button>
                 
             </div></Zoom >
             {apk ? <div style={{ maxWidth: "400px", margin: '0 auto', marginBottom: "50px" }}>
