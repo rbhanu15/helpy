@@ -29,6 +29,8 @@ import {
     Link
 } from "react-router-dom";
 
+import ReactGA from 'react-ga';
+
 function Landing() {
 
     const [language, setlanguage] = useState("de");
@@ -94,7 +96,20 @@ function Landing() {
                 
             </div></Zoom>
             <Zoom><div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button onClick={() => setApk(!apk)} className="download" style={{ width: '250px', marginTop: "-30px" }}>{language == "de" ? <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' download>Download Apk für Android</a> : <a href='/text.apk' download>Download Apk für Android</a>}</button>
+                <button onClick={() => setApk(!apk)} className="download2" style={{ width: '250px', marginTop: "-30px" }}>
+                    {language == "de" ? <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' onClick={() => {
+                    ReactGA.event({
+                            category: 'User',
+                            action: 'Download Apk'
+                        })
+                    }} download>Download Apk für Android</a> 
+                    :
+                    <a href='/Helpy-78fcdd7e9ecb49b7b388a99a0f16aaa7-signed.apk' onClick={() => {
+                        ReactGA.event({
+                            category: 'User',
+                            action: 'Download Apk'
+                        })
+                    }} download>Download APK for Android</a>}</button>
                 
             </div></Zoom >
             {apk ? <div style={{ maxWidth: "400px", margin: '0 auto', marginBottom: "50px" }}>
@@ -103,7 +118,7 @@ function Landing() {
                 <Player
                     playsInline
                     poster="/assets/poster.png"
-                    src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+                    src="/video.mp4"
                 />
             </div> 
             : 
@@ -197,7 +212,7 @@ function Landing() {
 
                 <Link to="/agb"><div className ="agb">AGB</div></Link>
 
-                <div style={{ display: "flex", justifyContent: 'center' }}><a style={{ color: "white", padding: "40px 10px 10px 10px", fontSize: "17px" }}>Contact us: <a style={{ fontWeight: "bold" }}>ceastartup@gmail.com</a></a></div>
+                <div style={{ display: "flex", justifyContent: 'center' }}><a style={{ color: "white", padding: "40px 10px 10px 10px", fontSize: "17px" }}>Contact us: <a style={{ fontWeight: "bold", color: "white" }}>ceastartup@gmail.com</a></a></div>
             </div>
         </div>
     );
