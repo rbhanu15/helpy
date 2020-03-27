@@ -17,6 +17,7 @@ import SignupScreen from "./src/Screens/SignupScreen";
 import Authhome from './src/Screens/AuthhomeScreen';
 import NotifiScreen from './src/Screens/NotifiScreen';
 import HomeScreen from './src/Screens/HomeScreen';
+import StatisticScreen from "./src/Screens/StatisticScreen";
 import ResolveofAuthScreen from './src/Screens/ResolveofAuthScreen';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import { setNavigator } from './src/NavigationRef';
@@ -175,6 +176,7 @@ const switchNavigator = createSwitchNavigator({
   mainFlow: createBottomTabNavigator({
     Home: HomeScreen,
     Notification: NotifiScreen,
+    Statistic: StatisticScreen,
     Account: AccountScreen
   },
   {
