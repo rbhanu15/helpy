@@ -45,10 +45,6 @@ export default class Statistic extends React.Component {
         </View>
       );
     } else {
-      // let countries = this.state.dataSource.map((val, key) => {
-      //   return <View key={key} style={StyleSheet.item}><Text>{val.Country}</Text><Text>{val.Slug}</Text><Text>{val.NewConfirmed}</Text><Text>{val.TotalConfirmed}</Text><Text>{val.NewDeaths}</Text><Text>{val.TotalDeaths}</Text><Text>{val.NewRecovered}</Text><Text>{val.TotalRecovered}</Text></View>
-      // });
-
       return (
         <FlatList 
           data={this.state.dataSource} 
@@ -63,12 +59,6 @@ export default class Statistic extends React.Component {
           keyExtractor={item => item.Country}
         />
       );
-
-      // return (
-      //   <View style={StyleSheet.container}>
-      //     {countries}
-      //   </View>
-      // );
     }
   }
 }
