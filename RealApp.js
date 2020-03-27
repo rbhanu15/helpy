@@ -136,6 +136,11 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
     if(routeName === 'Account')
     {
       iconName = `md-person`;
+    }else{
+      if(routeName === 'Statistic')
+      {
+        iconName = `ios-stats`;
+      }
     }
   }
   // You can return any component that you like here!

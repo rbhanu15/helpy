@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, View, Text, Image, I18nManager, AsyncStorage } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import RealApp from "./RealApp";
+
 
 
 I18nManager.forceRTL(false);
@@ -33,7 +34,8 @@ const slides = [
   ];
   
   export default class App extends React.Component {
-    
+
+
     componentDidMount() {
       AsyncStorage.getItem("first_item").then((value) => {
         this.setState({ showRealApp: value });

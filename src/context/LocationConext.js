@@ -69,8 +69,36 @@ const addLocation = dispatch => async (userlocation) => {
   };
 
 
+  const deleteLocation = dispatch => async (userlocation) => {
+
+        const token = await AsyncStorage.getItem('token'); 
+        const auth = "Bearer "+token;
+        try{
+        const response = await trackerApi.post('/deletelocation',{ 
+            position: { type : "Point",
+                  coordinates : [
+                    userlocation.coordinates[0],
+                    userlocation.coordinates[1]
+                   ]
+                 },
+       },
+       {
+        headers: {
+        Authorization: auth 
+        },
+       },
+       );
+       console.log(response.data)
+
+    }catch(err)
+    {
+        console.log(err);
+    }
+  };
+
+
 export const { Context, Provider } = createDataContext(
     locationReducer,
-    { addLocation, givecontactpersons},
+    { addLocation, givecontactpersons, deleteLocation},
     {locations: [], currentLocation: null, count:0 ,contactpersons:'' }
 );
