@@ -77,7 +77,11 @@ const en = {
   coffe: 'Buy us a coffee',
   notifications: 'No one in your Contact Persons have corona.',
   yes: 'Yes',
-  no: 'No'
+  no: 'No',
+  totalcon: 'Total Cases',
+  totalrec:'Totally Recovered',
+  totaldea:'Total Deaths',
+  derzeit: 'Active Cases'
 };
 
 const de = {
@@ -113,7 +117,11 @@ const de = {
   coffe: 'Kaufe uns einen Kaffee',
   notifications: 'Niemand in Ihrer Kontaktperson ist mit dem Corona-Virus Infiziert.',
   yes: 'Ja',
-  no: 'nein'
+  no: 'nein',
+  totalcon: 'Gesamt Fälle',
+  totalrec:'Geheilt',
+  totaldea:'Gestorben',
+  derzeit: 'Derzeit Krank'
 };
 
 i18n.fallbacks = true;

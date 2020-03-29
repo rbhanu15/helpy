@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   image: {
-    width: 320,
+    width: 320, 
     height: 320,
   },
   text: {

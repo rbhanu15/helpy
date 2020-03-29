@@ -1,18 +1,29 @@
 import React from "react";
-import { StyleSheet, Text, View, FlatList, ActivityIndicator, Image } from "react-native";
-
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, Image, SafeAreaView, Dimensions  } from "react-native";
+import {getCountryName} from '../Hooks/Countrycodes';
 import cross from "../img/cross.png"
 import arrow from "../img/arrow-up.png"
 import healing from "../img/healing.png"
 import { opacity } from "react-native-redash";
+import Flag from 'react-native-flags';
+import Spacer from '../components/Spacer';
+
 
 
 function Item({ country, newConfirmed, totalConfirmed, newDeaths, newRecovered, totalRecovered }) {
+  
+  const countrycode = getCountryName(country);
+  
   return (
-    <View style={styles.item}>
-
       
+    <View style={styles.item}>
+      <View style={{display:'flex', flexDirection:'row',marginBottom:5 }}>
+      <Flag
+       code={countrycode}
+       size={48}
+      />
       <Text style={styles.country}>{country}</Text>
+      </View>
 
       <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
         <View style = {{flex: 1}}>
@@ -20,7 +31,7 @@ function Item({ country, newConfirmed, totalConfirmed, newDeaths, newRecovered, 
           <View style={{ display: "flex", flexDirection: "row" }}><Image source={arrow} style={styles.iconArrow}></Image><Text style={styles.newTotal}>{newConfirmed}</Text></View>
         </View>
         <View style={{ flex: 1 }}>
-          <View style={{ display: "flex", flexDirection: "row" }}><Image source={cross} style={styles.img}></Image><Text style={styles.death}>{totalConfirmed}</Text></View>
+          <View style={{ display: "flex", flexDirection: "row" }}><Image source={cross} style={styles.img}></Image><Text style={styles.death}>{newDeaths}</Text></View>
           <View style={{ display: "flex", flexDirection: "row" }}><Image source={arrow} style={styles.iconArrow}></Image><Text style={styles.newDeath}>{newDeaths}</Text></View>
         </View>
         <View style={{ flex: 1 }}>
@@ -33,23 +44,51 @@ function Item({ country, newConfirmed, totalConfirmed, newDeaths, newRecovered, 
   );
 }
 
+
 export default class Statistic extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
       dataSource: null,
+      worldwide: 0,
+      worldwiderec:0,
+      worldwidedeath:0
     }
   }
-
   componentDidMount() {
-    return fetch("https://api.covid19api.com/summary")
+  return fetch("https://api.covid19api.com/summary")
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({
+        const {Countries} = responseJson;
+
+        if (Countries && Array.isArray(Countries)) {  
+          const dataSource = Countries
+                            .sort((a, b) => Number(b.TotalConfirmed) - Number(a.TotalConfirmed))
+                            
+         const uniqe =dataSource.map(e => e['Slug'])
+                  .map((e, i, final) => final.indexOf(e) === i && i)
+                  .filter(e => Countries[e]).map(e => Countries[e])
+
+          const worldwide = uniqe
+                        .map(function(obj) { return obj.TotalConfirmed; })
+                        .reduce(function(a, b) { return a + b; });
+          const worldwiderec = uniqe
+                        .map(function(obj) { return obj.TotalRecovered; })
+                        .reduce(function(a, b) { return a + b; });
+          const worldwidedeath = uniqe
+          .map(function(obj) { return obj.TotalDeaths; })
+          .reduce(function(a, b) { return a + b; });
+
+
+          this.setState({
           isLoading: false,
-          dataSource: responseJson.Countries
+          dataSource: uniqe,
+          worldwide: worldwide,
+          worldwiderec: worldwiderec,
+          worldwidedeath: worldwidedeath
         })
+       }
       })
       .catch((error) => {
         console.log(error)
@@ -57,6 +96,15 @@ export default class Statistic extends React.Component {
   }
 
   render() {
+    const {worldwide,worldwidedeath,worldwiderec,dataSource} = this.state;
+    let { t } = this.props.screenProps; 
+
+    const totalcon = t('totalcon');
+    const totalrec = t('totalrec');
+    const totalIdea = t('totaldea');
+    const derzeit = t('derzeit');
+
+
     if (this.state.isLoading) {
       return (
         <View style={StyleSheet.container}>
@@ -65,6 +113,39 @@ export default class Statistic extends React.Component {
       );
     } else {
       return (
+        <SafeAreaView style={{backgroundColor:'#2c2e3e'}}>
+
+          <View style={{
+                display:'flex',
+                flexDirection:'row',
+                justifyContent:'space-around',
+                backgroundColor: '#34374c',
+                padding: 20,
+                marginVertical: 4,
+                marginHorizontal: 16,
+                borderRadius: 20,
+                borderWidth:2,
+                borderColor:'#f6f6f6'}}>
+
+          <View style={styles.worldwide}>
+            <Text style={{color:'white', fontSize:30, fontWeight:'bold'}}>{worldwide}</Text>
+            <Text style={{color:'grey', fontSize:12, marginBottom:5}}>{totalcon}</Text>
+            <Text style={{color:'white', fontSize:30, fontWeight:'bold'}}>{worldwide-worldwiderec}</Text>
+            <Text style={{color:'grey', fontSize:12, marginBottom:5}}>{derzeit}</Text>
+
+
+          </View>
+          <View style={styles.worldwide}>
+
+            <Text style={{color:'green', fontSize:20}}>{worldwiderec}</Text>
+            <Text style={{color:'grey', fontSize:12, marginBottom:15}}>{totalrec}</Text>
+          
+            <Text style={{color:'red', fontSize:20, opacity:0.7}}>{worldwidedeath}</Text>
+            <Text style={{color:'grey', fontSize:12}}>{totalIdea}</Text>
+         
+          </View>
+          </View>
+        
         <FlatList 
           data={this.state.dataSource} 
           renderItem={({ item }) => <Item 
@@ -77,6 +158,7 @@ export default class Statistic extends React.Component {
                                     />}
           keyExtractor={item => item.Country}
         />
+        </SafeAreaView>
       );
     }
   }
@@ -86,21 +168,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  worldwide:{
+    margin: 10
+  },
   item: {
     flex: 1,
-    backgroundColor: '#232323',
+    backgroundColor: '#34374c',
     padding: 20,
     marginVertical: 4,
     marginHorizontal: 16,
-    borderRadius: 20
+    borderRadius: 20,
+    borderWidth:2,
+    borderColor:'#ee2b47'
+    
   },
   flag: {
-    fontSize: 32,
+    display: 'flex'
   },
   country: {
     fontSize: 28,
     color: "white",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginLeft:15,
+    marginVertical:10
   },
   
   img: {
