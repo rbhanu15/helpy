@@ -14,6 +14,9 @@ const SignupScreen = ({ navigation, screenProps }) => {
   const signuptext = t('siguptext');
   const already = t('alreadyhav');
   const passwordtext = t('passtext');
+  const confirmpass = t('confirmpass');
+  const conpasserror =t('conpasserror');
+  const emailerrors =t('emailerror');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,6 +30,9 @@ const SignupScreen = ({ navigation, screenProps }) => {
           buttontext={signupbuttom}
           loadingvalue={false}
           passwordtext={passwordtext}
+          confirmpass={confirmpass}
+          conpasserror={conpasserror}
+          emailerrors={emailerrors}
         />
         </Spacer>
         <Text onPress={() => Linking.openURL('https://helpy-landing.now.sh/agb')} style={{ marginHorizontal: 15, marginBottom: 15 }}>Durch das Klicken auf Registrierung stimmen Sie den <Text style={{ color: "blue" }}>Allgemeinen Geschäftsbedingungen</Text> zu</Text>

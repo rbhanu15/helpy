@@ -81,7 +81,10 @@ const en = {
   totalcon: 'Total Cases',
   totalrec:'Totally Recovered',
   totaldea:'Total Deaths',
-  derzeit: 'Active Cases'
+  derzeit: 'Active Cases',
+  confirmpass: 'confirm your password',
+  conpasserror:'password doesnt match',
+  emailerror:'incorrect input'
 };
 
 const de = {
@@ -121,7 +124,10 @@ const de = {
   totalcon: 'Gesamt Fälle',
   totalrec:'Geheilt',
   totaldea:'Gestorben',
-  derzeit: 'Derzeit Krank'
+  derzeit: 'Derzeit Krank',
+  confirmpass: 'Bestätige dein Passwort',
+  conpasserror:'Passwörter stimmen nicht überein',
+  emailerror:'falsche Eingabe'
 };
 
 i18n.fallbacks = true;

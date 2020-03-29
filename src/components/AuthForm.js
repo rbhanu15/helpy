@@ -5,13 +5,16 @@ import Spacer from './Spacer';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 
-const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue, passwordtext }) => {
+const Authform = ({ headerText, errorMessage,onSubmit, buttontext, conpasserror, passwordtext, confirmpass, emailerrors }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
     const [userposition, setloc] = useState('');
     const [showindicator, setShowind] = useState(false);
+    const [passworderror, setPassworderorr] = useState(false);
+    const [emailerror, setemailerror] = useState(false);
 
-
+    const emailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     useEffect(()=>{
         _getLocationAsync();
@@ -36,6 +39,8 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue,
     return(
       <>
         <Spacer>
+        <Spacer />
+        <Spacer />
         <Text h3 style={{marginTop:59}}>{headerText}</Text>
         </Spacer>
         <Input label="Email" 
@@ -44,6 +49,7 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue,
         autoCapitalize="none"
         autoCorrect={false}
         />
+        {emailerror ? <Text style={styles.errorMessage}>{emailerrors}</Text>:null}
         <Spacer />
         <Input label={passwordtext} 
         value={password} 
@@ -52,18 +58,36 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext, loadingvalue,
         autoCorrect={false}
         secureTextEntry
         />
+        <Input 
+        label={confirmpass} 
+        value={password2} 
+        onChangeText={setPassword2} 
+        autoCapitalize="none"
+        autoCorrect={false}
+        secureTextEntry
+        />
+        {passworderror ? <Text style={styles.errorMessage}>{conpasserror}</Text>:null}
         {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text>: null}
         <Spacer>
         <Button 
         title={buttontext} 
         onPress={()=> {
-        onSubmit({email, password,userposition});
-        setShowind(true);
+          if(emailFormat.test(email))
+          {
+          if(password === password2){
+            onSubmit({email, password,userposition});
+            setShowind(true);
+          }else{
+            setPassworderorr(true)
+           }
+          }else{
+            setemailerror(true);
+          }
         }}
         />
         </Spacer>
-        {showindicator && !errorMessage ?  <ActivityIndicator size="large" color="#FA5858" />: null}
-        </>
+        {showindicator && !errorMessage ?  <ActivityIndicator size="large" color="#FA5858" />: null} 
+  </>
     );
 };
 
