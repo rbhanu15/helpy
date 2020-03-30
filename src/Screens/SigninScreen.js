@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {View, StyleSheet, Image, SafeAreaView} from 'react-native';
 import { NavigationEvents } from 'react-navigation';
 import {Context} from '../context/AuthContext';
-import AuthForm from '../components/AuthForm';
+import AuthForm2 from '../components/AuthForm2';
 import NavLink from '../components/NavLink';
 
 const SigninScreen = ({ navigation, screenProps }) => { 
@@ -17,7 +17,7 @@ const SigninScreen = ({ navigation, screenProps }) => {
   <SafeAreaView style={styles.container}>
   <View>
   <NavigationEvents onWillBlur={clearErrorMessage} />
-  <AuthForm 
+  <AuthForm2 
   headerText={signintext} 
   errorMessage={state.errorMessage} 
   onSubmit={signin}
