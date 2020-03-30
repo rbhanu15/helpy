@@ -46,7 +46,7 @@ const AccountScreen = (props) => {
        <Button title={signoutb} onPress={signout} />
     </Spacer>
     <Spacer>
-      <Button buttonStyle={{backgroundColor: 'red'}} title={deleteAccb} onPress={() => Alert.alert(
+      <Button buttonStyle={{backgroundColor: '#FF6366'}} title={deleteAccb} onPress={() => Alert.alert(
         `${deleteAccTitleb}`,
         `${deleteAccDescb}`,
         [
