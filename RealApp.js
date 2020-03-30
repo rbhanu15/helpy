@@ -46,8 +46,8 @@ import i18n from 'i18n-js';
 
 const en = {
   My_Account: 'My account',
-  signup: 'signup',
-  signin: 'signin',
+  signup: 'Sign Up',
+  signin: 'Sign In',
   signintext: 'Welcome back',
   signout: 'signout',
   passtext: 'Password',
