@@ -16,6 +16,8 @@ const authReducer = ( state, actions) => {
                 return { token: null, errorMessage:'' };
         case 'setemail':
                 return {email: actions.payload};
+        case 'delete':
+                return { token: null, errorMessage:''};
         default:
             return state;
     }
@@ -91,11 +93,32 @@ const signout = (dispatch) => async ()=>{
     dispatch({type: 'setemail', payload: response.data});
 };*/
 
+const deleteacc = (dispatch) => async () => {
+    
+    const token = await AsyncStorage.getItem('token'); 
+        const auth = "Bearer "+token;
+        try{
+        const response = await trakerAPI.post('/deleteuser',{},
+        {
+            headers: {
+            Authorization: auth 
+            },
+        },
+       );
+    }catch(err)
+    {
+        console.log(err);
+    }
+
+    await AsyncStorage.removeItem('token');
+    dispatch({ type:'delete' });
+    navigate('loginFlow');
+};
 
 
 
 export const {Provider, Context} = createDataContext(
     authReducer,
-    {signin, signup,signout, clearErrorMessage, tryLocalsignin},
+    {signin, signup,signout, clearErrorMessage, tryLocalsignin, deleteacc},
     {token: null , errorMessage: ''}
 );

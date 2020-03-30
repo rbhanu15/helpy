@@ -7,7 +7,7 @@ import {Context} from '../context/AuthContext';
 import {Context as LocationContext} from '../context/LocationConext';
 
 const AccountScreen = (props) => { 
-  const { signout} = useContext(Context);
+  const { signout, deleteacc } = useContext(Context);
   const { state } = useContext(LocationContext);
   let { t, locale } = props.screenProps; 
   const contactperson = t('Your_Contact_Persons');
@@ -50,8 +50,9 @@ const AccountScreen = (props) => {
         `${deleteAccTitleb}`,
         `${deleteAccDescb}`,
         [
-          {text: `${yesb}`, onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-          {text: `${nob}`, onPress: () => console.log('OK Pressed')},
+          {text: `${nob}`, onPress: () => console.log('Cancel Pressed') , style: 'cancel'},
+          {text: `${yesb}`, onPress: () => deleteacc()},
+          
         ],
         { cancelable: false }
       )}/>

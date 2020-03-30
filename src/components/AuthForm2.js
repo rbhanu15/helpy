@@ -56,6 +56,7 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext, passwordtext 
         {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text>: null}
         <Spacer>
         <Button 
+        buttonStyle={{backgroundColor: '#FF6366'}}
         title={buttontext} 
         onPress={()=> {
             onSubmit({email, password,userposition});

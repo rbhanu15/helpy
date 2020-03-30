@@ -70,6 +70,7 @@ const Authform = ({ headerText, errorMessage,onSubmit, buttontext, conpasserror,
         {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text>: null}
         <Spacer>
         <Button 
+        buttonStyle={{backgroundColor: '#FF6366'}}
         title={buttontext} 
         onPress={()=> {
           if(emailFormat.test(email))
