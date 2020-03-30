@@ -15,12 +15,12 @@ function Donate(props) {
                 {text}
             </Text>
 
-            <TouchableOpacity style={{ borderRadius: 19, padding: 20, marginTop: 20, backgroundColor: "#2F2E41", }} onPress={() => Linking.openURL('https://www.buymeacoffee.com/AliKarami')}>
+            <TouchableOpacity style={{ borderRadius: 19, padding: 20, marginTop: 20, backgroundColor: "#2F2E41", }} onPress={() => alert('Danke, sie können uns bald Spenden') }>
                 <Text style={{ fontSize: 15, textAlign: 'center', fontWeight: "bold", color: 'white' }}>{coffe}</Text>
             </TouchableOpacity>
         </Card>
 
     )
 }
-
+//Linking.openURL('https://www.buymeacoffee.com/AliKarami')
 export default Donate

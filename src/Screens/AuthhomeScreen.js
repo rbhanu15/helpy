@@ -22,16 +22,18 @@ const AuthhomeScreen = ({ navigation, screenProps  })=> {
                    
                 
                 <View style={styles.downcontainer}>
+                <TouchableOpacity elevation={10} style={styles.buttom2} onPress={() => navigation.navigate('signup')}>
+                        <Text style={{color:'white',fontWeight:'bold'}}>
+                        {signupbuttom}
+                        </Text>
+                    </TouchableOpacity>
+                    
                     <TouchableOpacity elevation={10} style={styles.buttom} onPress={() => navigation.navigate('signin')}>
                         <Text style={{color:'black',fontWeight:'bold'}}>
                             {signinbuttom}</Text>
                     </TouchableOpacity>
                    
-                    <TouchableOpacity elevation={10} style={styles.buttom2} onPress={() => navigation.navigate('signup')}>
-                        <Text style={{color:'white',fontWeight:'bold'}}>
-                        {signupbuttom}
-                        </Text>
-                    </TouchableOpacity>
+                 
                 </View>
             </View>
         )
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
         height:60,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'#f6f6f6',
+        backgroundColor:'#e3e3e3',
         shadowColor:'#000000',
         shadowOffset: { width: 0, height: 2, },
         shadowOpacity: 0.25,
