@@ -107,14 +107,14 @@ export default class Statistic extends React.Component {
 
     if (this.state.isLoading) {
       return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
           <ActivityIndicator/>
         </View>
       );
     } else {
       return (
         <SafeAreaView style={{backgroundColor:'#2c2e3e'}}>
-
+          <Spacer />
           <View style={{
                 display:'flex',
                 flexDirection:'row',
@@ -166,7 +166,11 @@ export default class Statistic extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    display:'flex',
     flex: 1,
+    alignSelf:'center',
+    justifyContent:'center',
+    alignContent:'center'
   },
   worldwide:{
     margin: 10
