@@ -10,7 +10,7 @@ import Spacer from '../components/Spacer';
 
 
 
-function Item({ country, newConfirmed, totalConfirmed, newDeaths, newRecovered, totalRecovered }) {
+function Item({ country, newConfirmed, totalConfirmed, newDeaths, newRecovered, totalRecovered, TotalDeaths }) {
   
   const countrycode = getCountryName(country);
   
@@ -31,7 +31,7 @@ function Item({ country, newConfirmed, totalConfirmed, newDeaths, newRecovered, 
           <View style={{ display: "flex", flexDirection: "row" }}><Image source={arrow} style={styles.iconArrow}></Image><Text style={styles.newTotal}>{newConfirmed}</Text></View>
         </View>
         <View style={{ flex: 1 }}>
-          <View style={{ display: "flex", flexDirection: "row" }}><Image source={cross} style={styles.img}></Image><Text style={styles.death}>{newDeaths}</Text></View>
+          <View style={{ display: "flex", flexDirection: "row" }}><Image source={cross} style={styles.img}></Image><Text style={styles.death}>{TotalDeaths}</Text></View>
           <View style={{ display: "flex", flexDirection: "row" }}><Image source={arrow} style={styles.iconArrow}></Image><Text style={styles.newDeath}>{newDeaths}</Text></View>
         </View>
         <View style={{ flex: 1 }}>
@@ -155,6 +155,7 @@ export default class Statistic extends React.Component {
                                       newDeaths={item.NewDeaths}
                                       newRecovered={item.NewRecovered}
                                       totalRecovered={item.TotalRecovered}
+                                      TotalDeaths={item.TotalDeaths}
                                     />}
           keyExtractor={item => item.Country}
         />
