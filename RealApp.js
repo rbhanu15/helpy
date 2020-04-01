@@ -87,7 +87,8 @@ const en = {
   derzeit: 'Active Cases',
   confirmpass: 'confirm your password',
   conpasserror:'password doesnt match',
-  emailerror:'incorrect input'
+  emailerror:'incorrect input',
+  Datenschutz:'Privacy policy'
 };
 
 const de = {
@@ -133,7 +134,8 @@ const de = {
   derzeit: 'Derzeit Krank',
   confirmpass: 'Bestätige dein Passwort',
   conpasserror:'Passwörter stimmen nicht überein',
-  emailerror:'falsche Eingabe'
+  emailerror:'falsche Eingabe',
+  Datenschutz:'Datenschutzerklärung'
 };
 
 i18n.fallbacks = true;

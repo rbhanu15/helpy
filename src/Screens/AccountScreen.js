@@ -1,5 +1,5 @@
 import React, {useContext, useState}  from 'react';
-import {View, StyleSheet, Text, Alert} from 'react-native';
+import {View, StyleSheet, Text, Alert, Linking} from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import Spacer from '../components/Spacer';
@@ -18,6 +18,9 @@ const AccountScreen = (props) => {
   const deleteAccDescb = t('deleteAccDesc');
   const yesb = t('yes');
   const nob = t('no');
+
+  const datenschutz= t('Datenschutz');
+
   let count= 0;
   if(state.count>1)
   {
@@ -56,6 +59,9 @@ const AccountScreen = (props) => {
         ],
         { cancelable: false }
       )}/>
+    </Spacer>
+    <Spacer>
+      <Button buttonStyle={{backgroundColor:'#000'}} title={datenschutz} onPress={() => Linking.openURL('https://helpy-landing.now.sh/agb')}/>
     </Spacer>
     
     </SafeAreaView>
