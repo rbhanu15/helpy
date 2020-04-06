@@ -1,6 +1,5 @@
-import React, { useEffect, useCallback, useContext, useState } from "react";
+import React, { useState } from "react";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { View, Text } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 

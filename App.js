@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import {
   StyleSheet,
   View,
   Text,
-  Image,
   I18nManager,
   AsyncStorage,
 } from "react-native";
