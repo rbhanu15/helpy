@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Helpy",
-    "slug": "Helpy",
+    "name": "Helpyapp",
+    "slug": "Helpyapp",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -30,7 +30,7 @@
     },
     "android": {
       "package": "com.CEA.Helpyapp",
-      "versionCode": 1
+      "versionCode": 3
     },
     "description": ""
   }
